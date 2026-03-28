@@ -5,7 +5,7 @@
 > **Epic:** F6 — Cost Tracking & Reporting
 > **Effort:** m
 > **Priority:** medium
-> **Depends on:** P1-E1-T2-prisma-schema-seed.md, P1-E1-T3-interfaces-errors-middleware.md, P1-E1-T5-usage-repo-test-infra.md
+> **Depends on:** F1-T2-prisma-schema-seed.md, F1-T3-interfaces-errors-middleware.md, F1-T5-usage-repo-test-infra.md
 > **Plan source:** specs/plans/PLAN-F6-cost-tracking.md
 
 ## Description
@@ -83,4 +83,4 @@ Add the ModelPricing Prisma model, run the migration, define the IPricingRepo in
 
 ---
 _Generated from: specs/plans/PLAN-F6-cost-tracking.md_
-_Next step: "Implement task: specs/tasks/P3-E2-T1-model-pricing-schema-repository.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F6-cost-tracking/F6-T1-model-pricing-schema-repository.md" using the TDD skill._

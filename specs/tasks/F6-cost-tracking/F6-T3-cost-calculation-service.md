@@ -5,7 +5,7 @@
 > **Epic:** F6 — Cost Tracking & Reporting
 > **Effort:** l
 > **Priority:** medium
-> **Depends on:** P3-E2-T1-model-pricing-schema-repository.md, P1-E1-T5-usage-repo-test-infra.md
+> **Depends on:** F6-T1-model-pricing-schema-repository.md, F1-T5-usage-repo-test-infra.md
 > **Plan source:** specs/plans/PLAN-F6-cost-tracking.md
 
 ## Description
@@ -76,4 +76,4 @@ Implement CostService, the core business logic for cost tracking. The service de
 
 ---
 _Generated from: specs/plans/PLAN-F6-cost-tracking.md_
-_Next step: "Implement task: specs/tasks/P3-E2-T3-cost-calculation-service.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F6-cost-tracking/F6-T3-cost-calculation-service.md" using the TDD skill._

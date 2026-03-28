@@ -5,7 +5,7 @@
 > **Epic:** F7 — Usage Alerts & Thresholds
 > **Effort:** m
 > **Priority:** medium
-> **Depends on:** P3-E3-T1-alert-rule-model-repository.md
+> **Depends on:** F7-T1-alert-rule-model-repository.md
 > **Plan source:** specs/plans/PLAN-F7-usage-alerts.md
 
 ## Description

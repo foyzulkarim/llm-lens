@@ -5,7 +5,7 @@
 > **Epic:** F3 — Chat Proxy Endpoint
 > **Effort:** s
 > **Priority:** critical
-> **Depends on:** P1-E1-T3-interfaces-errors-middleware.md
+> **Depends on:** F1-T3-interfaces-errors-middleware.md
 > **Plan source:** specs/plans/PLAN-F3-chat-proxy.md
 
 ## Description
@@ -68,4 +68,4 @@ Implement a `validateChatRequest` middleware function that validates the `POST /
 
 ---
 _Generated from: specs/plans/PLAN-F3-chat-proxy.md_
-_Next step: "Implement task: specs/tasks/P1-E3-T1-chat-request-validation.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F3-chat-proxy/F3-T1-chat-request-validation.md" using the TDD skill._

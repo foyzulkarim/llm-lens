@@ -5,7 +5,7 @@
 > **Epic:** F5 — Prompt Templates
 > **Effort:** s
 > **Priority:** medium
-> **Depends on:** P3-E1-T3-template-crud-endpoints.md, P1-E1-T4-ollama-clients.md
+> **Depends on:** F5-T3-template-crud-endpoints.md, F1-T4-ollama-clients.md
 > **Plan source:** specs/plans/PLAN-F5-prompt-templates.md
 
 ## Description
@@ -78,4 +78,4 @@ Implement `POST /api/templates/:id/execute` — the endpoint that combines templ
 
 ---
 _Generated from: specs/plans/PLAN-F5-prompt-templates.md_
-_Next step: "Implement task: specs/tasks/P3-E1-T4-template-execute-endpoint.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F5-prompt-templates/F5-T4-template-execute-endpoint.md" using the TDD skill._

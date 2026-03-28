@@ -5,7 +5,7 @@
 > **Epic:** F7 — Usage Alerts & Thresholds
 > **Effort:** s
 > **Priority:** medium
-> **Depends on:** P3-E3-T2-alert-rule-crud-endpoints.md, P3-E3-T3-period-calculation-alert-evaluation.md
+> **Depends on:** F7-T2-alert-rule-crud-endpoints.md, F7-T3-period-calculation-alert-evaluation.md
 > **Plan source:** specs/plans/PLAN-F7-usage-alerts.md
 
 ## Description

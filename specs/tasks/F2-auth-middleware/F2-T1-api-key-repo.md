@@ -5,7 +5,7 @@
 > **Epic:** F2 — Auth Middleware
 > **Effort:** s
 > **Priority:** critical
-> **Depends on:** P1-E1-T1-project-scaffolding.md, P1-E1-T2-prisma-schema-seed.md, P1-E1-T5-usage-repo-test-infra.md
+> **Depends on:** F1-T1-project-scaffolding.md, F1-T2-prisma-schema-seed.md, F1-T5-usage-repo-test-infra.md
 > **Plan source:** specs/plans/PLAN-F2-auth-middleware.md
 
 ## Description
@@ -73,4 +73,4 @@ Define the IApiKeyRepo interface and implement PrismaApiKeyRepository as its con
 
 ---
 _Generated from: specs/plans/PLAN-F2-auth-middleware.md_
-_Next step: "Implement task: specs/tasks/P1-E2-T1-api-key-repo.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F2-auth-middleware/F2-T1-api-key-repo.md" using the TDD skill._

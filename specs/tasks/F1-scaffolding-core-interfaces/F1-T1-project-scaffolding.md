@@ -63,4 +63,4 @@ Initialize the greenfield Node.js + TypeScript + Express project. Set up all con
 
 ---
 _Generated from: specs/plans/PLAN-F1-scaffolding-core-interfaces.md_
-_Next step: "Implement task: specs/tasks/P1-E1-T1-project-scaffolding.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F1-scaffolding-core-interfaces/F1-T1-project-scaffolding.md" using the TDD skill._

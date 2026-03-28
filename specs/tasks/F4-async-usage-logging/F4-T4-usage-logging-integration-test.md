@@ -5,7 +5,7 @@
 > **Epic:** F4 — Async Usage Logging
 > **Effort:** m
 > **Priority:** high
-> **Depends on:** P2-E1-T2-fire-and-forget-proxy-integration.md, P1-E1-T5-usage-repo-test-infra.md
+> **Depends on:** F4-T2-fire-and-forget-proxy-integration.md, F1-T5-usage-repo-test-infra.md
 > **Plan source:** specs/plans/PLAN-F4-async-usage-logging.md
 
 ## Description
@@ -38,10 +38,10 @@ Write integration and API-level tests that verify the full usage logging flow en
 ## Implementation Notes
 
 - **Layer(s):** Integration test (`src/__tests__/integration/usage/`)
-- **Pattern reference:** Uses testDb and testApp helpers from P1-E1-T5
+- **Pattern reference:** Uses testDb and testApp helpers from F1-T5
 - **Key decisions:**
   - Use `await new Promise(r => setTimeout(r, 100))` after the API call to let the async log write complete before querying the DB
-  - Use the MockOllamaClient from P1-E1-T4 to control proxy responses
+  - Use the MockOllamaClient from F1-T4 to control proxy responses
   - Use the test database helpers to query UsageLog table directly
   - For the DB failure test, temporarily override the usage repo's create method to throw
 - **Libraries:** supertest, @prisma/client (for DB queries in assertions)
@@ -82,4 +82,4 @@ Since logging is fire-and-forget, the test must wait for the background write to
 
 ---
 _Generated from: specs/plans/PLAN-F4-async-usage-logging.md_
-_Next step: "Implement task: specs/tasks/P2-E1-T4-usage-logging-integration-test.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F4-async-usage-logging/F4-T4-usage-logging-integration-test.md" using the TDD skill._

@@ -5,7 +5,7 @@
 > **Epic:** F6 — Cost Tracking & Reporting
 > **Effort:** m
 > **Priority:** medium
-> **Depends on:** P3-E2-T1-model-pricing-schema-repository.md
+> **Depends on:** F6-T1-model-pricing-schema-repository.md
 > **Plan source:** specs/plans/PLAN-F6-cost-tracking.md
 
 ## Description
@@ -82,4 +82,4 @@ Implement the four pricing CRUD endpoints: POST /api/pricing, GET /api/pricing, 
 
 ---
 _Generated from: specs/plans/PLAN-F6-cost-tracking.md_
-_Next step: "Implement task: specs/tasks/P3-E2-T2-pricing-crud-endpoints.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F6-cost-tracking/F6-T2-pricing-crud-endpoints.md" using the TDD skill._

@@ -5,7 +5,7 @@
 > **Epic:** F8 — Conversation History & Search
 > **Effort:** m
 > **Priority:** medium
-> **Depends on:** P3-E4-T3-search-filter-pagination.md
+> **Depends on:** F8-T3-search-filter-pagination.md
 > **Plan source:** specs/plans/PLAN-F8-conversation-history.md
 
 ## Description
@@ -80,4 +80,4 @@ Implement the remaining three conversation endpoints: `GET /api/conversations` (
 
 ---
 _Generated from: specs/plans/PLAN-F8-conversation-history.md_
-_Next step: "Implement task: specs/tasks/P3-E4-T4-list-detail-delete-endpoints.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F8-conversation-history/F8-T4-list-detail-delete-endpoints.md" using the TDD skill._

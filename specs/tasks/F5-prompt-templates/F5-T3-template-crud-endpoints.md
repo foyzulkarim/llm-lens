@@ -5,7 +5,7 @@
 > **Epic:** F5 — Prompt Templates
 > **Effort:** m
 > **Priority:** medium
-> **Depends on:** P3-E1-T1-template-rendering-pure-functions.md, P3-E1-T2-prisma-model-template-repository.md
+> **Depends on:** F5-T1-template-rendering-pure-functions.md, F5-T2-prisma-model-template-repository.md
 > **Plan source:** specs/plans/PLAN-F5-prompt-templates.md
 
 ## Description
@@ -81,4 +81,4 @@ Implement the five CRUD endpoints for prompt templates: `POST /api/templates`, `
 
 ---
 _Generated from: specs/plans/PLAN-F5-prompt-templates.md_
-_Next step: "Implement task: specs/tasks/P3-E1-T3-template-crud-endpoints.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F5-prompt-templates/F5-T3-template-crud-endpoints.md" using the TDD skill._

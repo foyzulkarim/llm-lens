@@ -5,7 +5,7 @@
 > **Epic:** F1 — Scaffolding & Core Interfaces
 > **Effort:** s
 > **Priority:** critical
-> **Depends on:** P1-E1-T1-project-scaffolding.md
+> **Depends on:** F1-T1-project-scaffolding.md
 > **Plan source:** specs/plans/PLAN-F1-scaffolding-core-interfaces.md
 
 ## Description
@@ -85,4 +85,4 @@ Define all core interfaces (IOllamaClient, IAuthProvider, IUsageLogger, IUsageRe
 
 ---
 _Generated from: specs/plans/PLAN-F1-scaffolding-core-interfaces.md_
-_Next step: "Implement task: specs/tasks/P1-E1-T3-interfaces-errors-middleware.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F1-scaffolding-core-interfaces/F1-T3-interfaces-errors-middleware.md" using the TDD skill._

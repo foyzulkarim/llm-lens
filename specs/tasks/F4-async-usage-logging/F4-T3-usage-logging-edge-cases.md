@@ -5,7 +5,7 @@
 > **Epic:** F4 — Async Usage Logging
 > **Effort:** s
 > **Priority:** high
-> **Depends on:** P2-E1-T2-fire-and-forget-proxy-integration.md
+> **Depends on:** F4-T2-fire-and-forget-proxy-integration.md
 > **Plan source:** specs/plans/PLAN-F4-async-usage-logging.md
 
 ## Description
@@ -75,4 +75,4 @@ Handle defensive edge cases in the usage logging path: missing user context (bel
 
 ---
 _Generated from: specs/plans/PLAN-F4-async-usage-logging.md_
-_Next step: "Implement task: specs/tasks/P2-E1-T3-usage-logging-edge-cases.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F4-async-usage-logging/F4-T3-usage-logging-edge-cases.md" using the TDD skill._

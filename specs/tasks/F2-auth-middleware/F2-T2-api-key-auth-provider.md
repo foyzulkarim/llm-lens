@@ -5,7 +5,7 @@
 > **Epic:** F2 — Auth Middleware
 > **Effort:** s
 > **Priority:** critical
-> **Depends on:** P1-E1-T3-interfaces-errors-middleware.md, P1-E2-T1-api-key-repo.md
+> **Depends on:** F1-T3-interfaces-errors-middleware.md, F2-T1-api-key-repo.md
 > **Plan source:** specs/plans/PLAN-F2-auth-middleware.md
 
 ## Description
@@ -72,4 +72,4 @@ Implement ApiKeyAuthProvider as the concrete implementation of IAuthProvider. It
 
 ---
 _Generated from: specs/plans/PLAN-F2-auth-middleware.md_
-_Next step: "Implement task: specs/tasks/P1-E2-T2-api-key-auth-provider.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F2-auth-middleware/F2-T2-api-key-auth-provider.md" using the TDD skill._

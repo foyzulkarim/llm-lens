@@ -5,7 +5,7 @@
 > **Epic:** F7 — Usage Alerts & Thresholds
 > **Effort:** s
 > **Priority:** medium
-> **Depends on:** P1-E1-T2-prisma-schema-seed.md, P1-E1-T3-interfaces-errors-middleware.md
+> **Depends on:** F1-T2-prisma-schema-seed.md, F1-T3-interfaces-errors-middleware.md
 > **Plan source:** specs/plans/PLAN-F7-usage-alerts.md
 
 ## Description

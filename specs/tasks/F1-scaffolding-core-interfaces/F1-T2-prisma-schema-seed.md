@@ -5,7 +5,7 @@
 > **Epic:** F1 — Scaffolding & Core Interfaces
 > **Effort:** s
 > **Priority:** critical
-> **Depends on:** P1-E1-T1-project-scaffolding.md
+> **Depends on:** F1-T1-project-scaffolding.md
 > **Plan source:** specs/plans/PLAN-F1-scaffolding-core-interfaces.md
 
 ## Description
@@ -73,4 +73,4 @@ Set up Prisma ORM with SQLite, define the ApiKey and UsageLog models with proper
 
 ---
 _Generated from: specs/plans/PLAN-F1-scaffolding-core-interfaces.md_
-_Next step: "Implement task: specs/tasks/P1-E1-T2-prisma-schema-seed.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F1-scaffolding-core-interfaces/F1-T2-prisma-schema-seed.md" using the TDD skill._

@@ -5,7 +5,7 @@
 > **Epic:** F6 — Cost Tracking & Reporting
 > **Effort:** m
 > **Priority:** medium
-> **Depends on:** P3-E2-T3-cost-calculation-service.md, P3-E2-T2-pricing-crud-endpoints.md
+> **Depends on:** F6-T3-cost-calculation-service.md, F6-T2-pricing-crud-endpoints.md
 > **Plan source:** specs/plans/PLAN-F6-cost-tracking.md
 
 ## Description
@@ -74,4 +74,4 @@ Implement the GET /api/reports/costs endpoint that exposes the CostService's cal
 
 ---
 _Generated from: specs/plans/PLAN-F6-cost-tracking.md_
-_Next step: "Implement task: specs/tasks/P3-E2-T4-cost-report-endpoint.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F6-cost-tracking/F6-T4-cost-report-endpoint.md" using the TDD skill._

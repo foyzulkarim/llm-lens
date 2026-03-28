@@ -5,7 +5,7 @@
 > **Epic:** F3 — Chat Proxy Endpoint
 > **Effort:** m
 > **Priority:** high
-> **Depends on:** P1-E3-T3-chat-controller-route.md, P1-E1-T5-usage-repo-test-infra.md
+> **Depends on:** F3-T3-chat-controller-route.md, F1-T5-usage-repo-test-infra.md
 > **Plan source:** specs/plans/PLAN-F3-chat-proxy.md
 
 ## Description
@@ -89,4 +89,4 @@ Write API-level integration tests for `POST /api/chat` using Supertest against t
 
 ---
 _Generated from: specs/plans/PLAN-F3-chat-proxy.md_
-_Next step: "Implement task: specs/tasks/P1-E3-T4-chat-proxy-api-tests.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F3-chat-proxy/F3-T4-chat-proxy-api-tests.md" using the TDD skill._

@@ -5,7 +5,7 @@
 > **Epic:** F4 — Async Usage Logging
 > **Effort:** s
 > **Priority:** critical
-> **Depends on:** P1-E1-T3-interfaces-errors-middleware.md, P1-E1-T5-usage-repo-test-infra.md
+> **Depends on:** F1-T3-interfaces-errors-middleware.md, F1-T5-usage-repo-test-infra.md
 > **Plan source:** specs/plans/PLAN-F4-async-usage-logging.md
 
 ## Description
@@ -56,8 +56,8 @@ Implement `UsageLoggerService`, the concrete implementation of the `IUsageLogger
 - None
 
 **Must NOT modify:**
-- `src/interfaces/` (already defined in P1-E1-T3)
-- `src/usage/usageRepository.ts` (already defined in P1-E1-T5)
+- `src/interfaces/` (already defined in F1-T3)
+- `src/usage/usageRepository.ts` (already defined in F1-T5)
 
 ## TDD Sequence
 
@@ -68,4 +68,4 @@ Implement `UsageLoggerService`, the concrete implementation of the `IUsageLogger
 
 ---
 _Generated from: specs/plans/PLAN-F4-async-usage-logging.md_
-_Next step: "Implement task: specs/tasks/P2-E1-T1-usage-logger-service.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F4-async-usage-logging/F4-T1-usage-logger-service.md" using the TDD skill._

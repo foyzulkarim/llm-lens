@@ -5,7 +5,7 @@
 > **Epic:** F2 — Auth Middleware
 > **Effort:** m
 > **Priority:** critical
-> **Depends on:** P1-E1-T1-project-scaffolding.md, P1-E1-T3-interfaces-errors-middleware.md, P1-E2-T2-api-key-auth-provider.md
+> **Depends on:** F1-T1-project-scaffolding.md, F1-T3-interfaces-errors-middleware.md, F2-T2-api-key-auth-provider.md
 > **Plan source:** specs/plans/PLAN-F2-auth-middleware.md
 
 ## Description
@@ -84,4 +84,4 @@ Implement the auth middleware function that extracts the X-API-Key header, valid
 
 ---
 _Generated from: specs/plans/PLAN-F2-auth-middleware.md_
-_Next step: "Implement task: specs/tasks/P1-E2-T3-auth-middleware.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F2-auth-middleware/F2-T3-auth-middleware.md" using the TDD skill._

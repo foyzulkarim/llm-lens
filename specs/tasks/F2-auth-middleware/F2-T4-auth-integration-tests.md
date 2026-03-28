@@ -5,7 +5,7 @@
 > **Epic:** F2 — Auth Middleware
 > **Effort:** m
 > **Priority:** high
-> **Depends on:** P1-E1-T5-usage-repo-test-infra.md, P1-E2-T1-api-key-repo.md, P1-E2-T2-api-key-auth-provider.md, P1-E2-T3-auth-middleware.md
+> **Depends on:** F1-T5-usage-repo-test-infra.md, F2-T1-api-key-repo.md, F2-T2-api-key-auth-provider.md, F2-T3-auth-middleware.md
 > **Plan source:** specs/plans/PLAN-F2-auth-middleware.md
 
 ## Description
@@ -80,4 +80,4 @@ Wire the auth middleware into the Express app for all `/api/*` routes and write 
 
 ---
 _Generated from: specs/plans/PLAN-F2-auth-middleware.md_
-_Next step: "Implement task: specs/tasks/P1-E2-T4-auth-integration-tests.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F2-auth-middleware/F2-T4-auth-integration-tests.md" using the TDD skill._

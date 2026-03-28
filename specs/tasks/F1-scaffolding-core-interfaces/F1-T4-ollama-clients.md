@@ -5,7 +5,7 @@
 > **Epic:** F1 — Scaffolding & Core Interfaces
 > **Effort:** m
 > **Priority:** high
-> **Depends on:** P1-E1-T3-interfaces-errors-middleware.md
+> **Depends on:** F1-T3-interfaces-errors-middleware.md
 > **Plan source:** specs/plans/PLAN-F1-scaffolding-core-interfaces.md
 
 ## Description
@@ -81,4 +81,4 @@ Implement MockOllamaClient and RealOllamaClient — both implementing the IOllam
 
 ---
 _Generated from: specs/plans/PLAN-F1-scaffolding-core-interfaces.md_
-_Next step: "Implement task: specs/tasks/P1-E1-T4-ollama-clients.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F1-scaffolding-core-interfaces/F1-T4-ollama-clients.md" using the TDD skill._
