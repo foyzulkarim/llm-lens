@@ -11,3 +11,26 @@ build/
 *.egg-info/
 .venv/
 venv/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime
+.npm
+.node_repl_history
+
+# Coverage / testing
+coverage/
+.nyc_output/
+
+# Cache
+.cache/
+.parcel-cache/
+.eslintcache
+
+# TypeScript
+*.tsbuildinfo
