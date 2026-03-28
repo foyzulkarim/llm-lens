@@ -15,6 +15,7 @@ Implement `UsageLoggerService`, the concrete implementation of the `IUsageLogger
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/unit/usage/usageLoggerService.test.ts`
 
 ### Test Scenarios
@@ -49,13 +50,16 @@ Implement `UsageLoggerService`, the concrete implementation of the `IUsageLogger
 ## Files Expected
 
 **New files:**
+
 - `src/usage/usageLoggerService.ts` — UsageLoggerService implementing IUsageLogger
 - `src/__tests__/unit/usage/usageLoggerService.test.ts`
 
 **Modified files:**
+
 - None
 
 **Must NOT modify:**
+
 - `src/interfaces/` (already defined in F1-T3)
 - `src/usage/usageRepository.ts` (already defined in F1-T5)
 
@@ -67,5 +71,6 @@ Implement `UsageLoggerService`, the concrete implementation of the `IUsageLogger
 4. Write test: handles zero token values → verify no validation rejects zeros
 
 ---
+
 _Generated from: specs/plans/PLAN-F4-async-usage-logging.md_
 _Next step: "Implement task: specs/tasks/F4-async-usage-logging/F4-T1-usage-logger-service.md" using the TDD skill._

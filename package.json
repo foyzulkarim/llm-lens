@@ -4,12 +4,17 @@
   "description": "Ollama Usage Intelligence API",
   "main": "dist/server.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "dev": "nodemon",
     "start": "node dist/server.js",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
@@ -22,17 +27,33 @@
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
   },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,mdx,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.4",
     "@types/supertest": "^6.0.2",
+    "eslint": "^10.1.0",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
     "jest": "^29.7.0",
+    "lint-staged": "^16.4.0",
     "nodemon": "^3.1.9",
+    "prettier": "^3.8.1",
     "prisma": "^5.22.0",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.57.2"
   }
 }

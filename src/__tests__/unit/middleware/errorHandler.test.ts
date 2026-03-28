@@ -1,10 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { errorHandler } from "../../../middleware/errorHandler";
-import {
-  ValidationError,
-  AuthenticationError,
-  NotFoundError,
-} from "../../../errors";
+import { ValidationError, AuthenticationError, NotFoundError } from "../../../errors";
 
 function makeMocks() {
   const req = {} as Request;

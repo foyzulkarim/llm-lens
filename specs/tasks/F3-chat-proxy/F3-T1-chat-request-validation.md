@@ -15,6 +15,7 @@ Implement a `validateChatRequest` middleware function that validates the `POST /
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/unit/middleware/validateChatRequest.test.ts`
 
 ### Test Scenarios
@@ -50,12 +51,14 @@ Implement a `validateChatRequest` middleware function that validates the `POST /
 ## Files Expected
 
 **New files:**
+
 - `src/middleware/validateChatRequest.ts`
 - `src/__tests__/unit/middleware/validateChatRequest.test.ts`
 
 **Modified files:** None
 
 **Must NOT modify:**
+
 - `src/middleware/errorHandler.ts`
 - `src/interfaces/`
 - `src/app.ts` (route wiring is T3)
@@ -67,5 +70,6 @@ Implement a `validateChatRequest` middleware function that validates the `POST /
 3. Implement middleware to make all tests pass
 
 ---
+
 _Generated from: specs/plans/PLAN-F3-chat-proxy.md_
 _Next step: "Implement task: specs/tasks/F3-chat-proxy/F3-T1-chat-request-validation.md" using the TDD skill._

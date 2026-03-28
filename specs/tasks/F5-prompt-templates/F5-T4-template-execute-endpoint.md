@@ -15,6 +15,7 @@ Implement `POST /api/templates/:id/execute` — the endpoint that combines templ
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/unit/templates/templateService.execute.test.ts`
 - `src/__tests__/api/templates/templateExecute.test.ts`
 
@@ -57,14 +58,17 @@ Implement `POST /api/templates/:id/execute` — the endpoint that combines templ
 ## Files Expected
 
 **New files:**
+
 - `src/__tests__/unit/templates/templateService.execute.test.ts`
 - `src/__tests__/api/templates/templateExecute.test.ts`
 
 **Modified files:**
+
 - `src/templates/templateService.ts` — add execute method
 - `src/templates/templateRoutes.ts` — add POST /:id/execute route
 
 **Must NOT modify:**
+
 - `prisma/schema.prisma`
 - `src/templates/templateRendering.ts`
 - `src/templates/ITemplateRepo.ts`
@@ -77,5 +81,6 @@ Implement `POST /api/templates/:id/execute` — the endpoint that combines templ
 4. Verify Ollama error propagation maps to 502 via existing error handler
 
 ---
+
 _Generated from: specs/plans/PLAN-F5-prompt-templates.md_
 _Next step: "Implement task: specs/tasks/F5-prompt-templates/F5-T4-template-execute-endpoint.md" using the TDD skill._

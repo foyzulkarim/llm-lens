@@ -15,6 +15,7 @@ Implement two pure functions for template variable extraction and rendering. `ex
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/unit/templates/templateRendering.test.ts`
 
 ### Test Scenarios
@@ -59,13 +60,16 @@ Implement two pure functions for template variable extraction and rendering. `ex
 ## Files Expected
 
 **New files:**
+
 - `src/templates/templateRendering.ts` — extractVariables, renderTemplate
 - `src/__tests__/unit/templates/templateRendering.test.ts`
 
 **Modified files:**
+
 - None
 
 **Must NOT modify:**
+
 - `prisma/` directory
 - Any existing route or middleware files
 
@@ -75,5 +79,6 @@ Implement two pure functions for template variable extraction and rendering. `ex
 2. Write renderTemplate tests (happy path, missing var, empty string, extras, no recursion) → implement renderTemplate
 
 ---
+
 _Generated from: specs/plans/PLAN-F5-prompt-templates.md_
 _Next step: "Implement task: specs/tasks/F5-prompt-templates/F5-T1-template-rendering-pure-functions.md" using the TDD skill._

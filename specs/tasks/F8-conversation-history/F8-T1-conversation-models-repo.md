@@ -15,6 +15,7 @@ Add the Conversation and Message Prisma models to the schema, run the migration,
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/integration/conversations/conversationRepository.test.ts`
 
 ### Test Scenarios
@@ -64,11 +65,13 @@ Add the Conversation and Message Prisma models to the schema, run the migration,
 ## Files Expected
 
 **New files:**
+
 - `src/interfaces/IConversationRepo.ts` — IConversationRepo interface definition
 - `src/conversations/conversationRepository.ts` — PrismaConversationRepository implementing IConversationRepo
 - `src/__tests__/integration/conversations/conversationRepository.test.ts`
 
 **Modified files:**
+
 - `prisma/schema.prisma` — add Conversation and Message models with indexes and relations
 - `src/interfaces/index.ts` — add IConversationRepo to barrel export
 
@@ -83,5 +86,6 @@ Add the Conversation and Message Prisma models to the schema, run the migration,
 7. Add IConversationRepo to barrel export
 
 ---
+
 _Generated from: specs/plans/PLAN-F8-conversation-history.md_
 _Next step: "Implement task: specs/tasks/F8-conversation-history/F8-T1-conversation-models-repo.md" using the TDD skill._

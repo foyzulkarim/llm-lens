@@ -15,6 +15,7 @@ Add the `PromptTemplate` model to the Prisma schema and implement `ITemplateRepo
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/integration/templates/templateRepository.test.ts`
 
 ### Test Scenarios
@@ -51,14 +52,17 @@ Add the `PromptTemplate` model to the Prisma schema and implement `ITemplateRepo
 ## Files Expected
 
 **New files:**
+
 - `src/templates/ITemplateRepo.ts` — ITemplateRepo interface with TemplateData type
 - `src/templates/templateRepository.ts` — PrismaTemplateRepository class
 - `src/__tests__/integration/templates/templateRepository.test.ts`
 
 **Modified files:**
+
 - `prisma/schema.prisma` — add PromptTemplate model with userId index
 
 **Must NOT modify:**
+
 - Existing models in schema.prisma (only add new model)
 - Any route or middleware files
 
@@ -71,5 +75,6 @@ Add the `PromptTemplate` model to the Prisma schema and implement `ITemplateRepo
 5. Define ITemplateRepo interface to match the implemented methods
 
 ---
+
 _Generated from: specs/plans/PLAN-F5-prompt-templates.md_
 _Next step: "Implement task: specs/tasks/F5-prompt-templates/F5-T2-prisma-model-template-repository.md" using the TDD skill._

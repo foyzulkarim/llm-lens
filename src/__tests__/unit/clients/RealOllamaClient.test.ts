@@ -44,7 +44,7 @@ describe("RealOllamaClient", () => {
       expect.objectContaining({
         method: "POST",
         body: expect.stringContaining('"stream":false'),
-      })
+      }),
     );
   });
 

@@ -15,6 +15,7 @@ Write integration and API-level tests that verify the full usage logging flow en
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/integration/usage/usageLogging.test.ts`
 
 ### Test Scenarios
@@ -61,12 +62,15 @@ Since logging is fire-and-forget, the test must wait for the background write to
 ## Files Expected
 
 **New files:**
+
 - `src/__tests__/integration/usage/usageLogging.test.ts`
 
 **Modified files:**
+
 - None (all production code is already in place from T1-T3)
 
 **Must NOT modify:**
+
 - `src/usage/usageLoggerService.ts`
 - `src/proxy/chatHandler.ts`
 - `src/usage/usageRepository.ts`
@@ -81,5 +85,6 @@ Since logging is fire-and-forget, the test must wait for the background write to
 6. Write test: console.error called on DB failure → should pass (T2 .catch() handler)
 
 ---
+
 _Generated from: specs/plans/PLAN-F4-async-usage-logging.md_
 _Next step: "Implement task: specs/tasks/F4-async-usage-logging/F4-T4-usage-logging-integration-test.md" using the TDD skill._

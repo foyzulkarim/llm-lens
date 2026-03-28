@@ -15,6 +15,7 @@ Implement the `ProxyService` class that accepts a `ChatRequest`, forwards it to 
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/unit/services/ProxyService.test.ts`
 
 ### Test Scenarios
@@ -54,12 +55,14 @@ Implement the `ProxyService` class that accepts a `ChatRequest`, forwards it to 
 ## Files Expected
 
 **New files:**
+
 - `src/services/ProxyService.ts`
 - `src/__tests__/unit/services/ProxyService.test.ts`
 
 **Modified files:** None
 
 **Must NOT modify:**
+
 - `src/interfaces/IOllamaClient.ts`
 - `src/clients/MockOllamaClient.ts`
 - `src/middleware/`
@@ -72,5 +75,6 @@ Implement the `ProxyService` class that accepts a `ChatRequest`, forwards it to 
 4. Write tests for error propagation (connection, response, timeout) -> add error handling
 
 ---
+
 _Generated from: specs/plans/PLAN-F3-chat-proxy.md_
 _Next step: "Implement task: specs/tasks/F3-chat-proxy/F3-T2-proxy-service.md" using the TDD skill._

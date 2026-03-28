@@ -12,6 +12,7 @@ Users configure alert rules with token limits (daily or monthly) scoped to a use
 ## Requirements
 
 ### Functional Requirements
+
 1. `POST /api/alerts` — Create an alert rule (scope, scopeValue, metric, tokenThreshold, alertPercentage)
 2. `GET /api/alerts` — List all alert rules for the authenticated user
 3. `PUT /api/alerts/:id` — Update a rule
@@ -23,6 +24,7 @@ Users configure alert rules with token limits (daily or monthly) scoped to a use
 9. Inactive rules are skipped during status evaluation
 
 ### Non-Functional Requirements
+
 1. Status evaluation is on-demand (computed on every GET, not cached)
 2. Each rule evaluation should require at most one database query for usage summation
 3. Alert rules are scoped to the user who created them
@@ -31,32 +33,35 @@ Users configure alert rules with token limits (daily or monthly) scoped to a use
 
 ### Prisma Model: AlertRule
 
-| Field | Type | Constraints |
-|-------|------|------------|
-| id | String | @id @default(uuid()) |
-| userId | String | creator/owner of the rule |
-| scope | String | "user" or "model" |
-| scopeValue | String | userId being tracked, or model name |
-| metric | String | "daily" or "monthly" |
-| tokenThreshold | Int | total token limit |
-| alertPercentage | Decimal | percentage trigger (e.g., 80.0 = alert at 80%) |
-| isActive | Boolean | @default(true) |
-| createdAt | DateTime | @default(now()) |
-| updatedAt | DateTime | @updatedAt |
+| Field           | Type     | Constraints                                    |
+| --------------- | -------- | ---------------------------------------------- |
+| id              | String   | @id @default(uuid())                           |
+| userId          | String   | creator/owner of the rule                      |
+| scope           | String   | "user" or "model"                              |
+| scopeValue      | String   | userId being tracked, or model name            |
+| metric          | String   | "daily" or "monthly"                           |
+| tokenThreshold  | Int      | total token limit                              |
+| alertPercentage | Decimal  | percentage trigger (e.g., 80.0 = alert at 80%) |
+| isActive        | Boolean  | @default(true)                                 |
+| createdAt       | DateTime | @default(now())                                |
+| updatedAt       | DateTime | @updatedAt                                     |
 
 ### Period Calculation
 
 **Daily metric:**
+
 - Period start: today at 00:00:00 UTC
 - Period end: today at 23:59:59.999 UTC
 
 **Monthly metric:**
+
 - Period start: 1st of current month at 00:00:00 UTC
 - Period end: last day of current month at 23:59:59.999 UTC
 
 ### Alert Evaluation Logic
 
 For each active rule:
+
 1. Determine the current period (daily or monthly) based on UTC time
 2. Query UsageLog for total tokens within that period, filtered by scope:
    - scope "user": `WHERE userId = scopeValue AND createdAt BETWEEN periodStart AND periodEnd`
@@ -69,6 +74,7 @@ For each active rule:
 ### Endpoints
 
 **POST /api/alerts**
+
 ```json
 // Request
 { "scope": "user", "scopeValue": "user-1", "metric": "daily", "tokenThreshold": 10000, "alertPercentage": 80 }
@@ -77,6 +83,7 @@ For each active rule:
 ```
 
 **GET /api/alerts/status**
+
 ```json
 // Response 200
 {
@@ -112,55 +119,56 @@ For each active rule:
 
 **Validation Rules:**
 
-| Field | Rule |
-|-------|------|
-| scope | Required, must be "user" or "model" |
-| scopeValue | Required, non-empty string |
-| metric | Required, must be "daily" or "monthly" |
-| tokenThreshold | Required, positive integer > 0 |
-| alertPercentage | Required, 1-100 (decimal) |
-| isActive | Optional on update, boolean |
+| Field           | Rule                                   |
+| --------------- | -------------------------------------- |
+| scope           | Required, must be "user" or "model"    |
+| scopeValue      | Required, non-empty string             |
+| metric          | Required, must be "daily" or "monthly" |
+| tokenThreshold  | Required, positive integer > 0         |
+| alertPercentage | Required, 1-100 (decimal)              |
+| isActive        | Optional on update, boolean            |
 
 **Error Scenarios:**
 
-| Condition | Status | Code |
-|-----------|--------|------|
-| Missing required fields | 400 | VALIDATION_ERROR |
-| Invalid scope value | 400 | VALIDATION_ERROR |
-| Invalid metric value | 400 | VALIDATION_ERROR |
-| tokenThreshold <= 0 | 400 | VALIDATION_ERROR |
-| alertPercentage outside 1-100 | 400 | VALIDATION_ERROR |
-| Rule not found (PUT/DELETE) | 404 | NOT_FOUND |
-| Rule belongs to different user | 404 | NOT_FOUND |
+| Condition                      | Status | Code             |
+| ------------------------------ | ------ | ---------------- |
+| Missing required fields        | 400    | VALIDATION_ERROR |
+| Invalid scope value            | 400    | VALIDATION_ERROR |
+| Invalid metric value           | 400    | VALIDATION_ERROR |
+| tokenThreshold <= 0            | 400    | VALIDATION_ERROR |
+| alertPercentage outside 1-100  | 400    | VALIDATION_ERROR |
+| Rule not found (PUT/DELETE)    | 404    | NOT_FOUND        |
+| Rule belongs to different user | 404    | NOT_FOUND        |
 
 ## Edge Cases & Failure Modes
 
-| Scenario | Decision | Rationale |
-|----------|----------|-----------|
-| No usage data for the current period | currentUsage = 0, percentageConsumed = 0, no alerts triggered | Valid state — period just started |
-| Usage exactly at threshold | thresholdBreached = true (>= comparison) | Exact match means the limit is reached |
-| Usage exactly at alert percentage | alertTriggered = true (>= comparison) | Exact match triggers the alert |
-| percentageConsumed > 100% | Return actual percentage (e.g., 120%) | Don't cap; show how far over the limit |
-| remaining goes negative | Return 0 (clamp to non-negative) | Negative remaining is confusing |
-| User creates rule tracking a non-existent user/model | Allow creation; status returns 0 usage | Don't validate scopeValue against existing data; the model/user might appear later |
-| Multiple rules for the same scope+metric | All are evaluated independently | Users may want different thresholds (warning at 80%, critical at 95%) |
-| Rule created mid-day for daily metric | Evaluates from start of current day | Consistent period; don't start from rule creation time |
-| Timezone considerations | All periods in UTC | Consistent, simple; documented for users |
-| Deactivated rule reactivated | Evaluates normally from current period | No history of when it was inactive |
+| Scenario                                             | Decision                                                      | Rationale                                                                          |
+| ---------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| No usage data for the current period                 | currentUsage = 0, percentageConsumed = 0, no alerts triggered | Valid state — period just started                                                  |
+| Usage exactly at threshold                           | thresholdBreached = true (>= comparison)                      | Exact match means the limit is reached                                             |
+| Usage exactly at alert percentage                    | alertTriggered = true (>= comparison)                         | Exact match triggers the alert                                                     |
+| percentageConsumed > 100%                            | Return actual percentage (e.g., 120%)                         | Don't cap; show how far over the limit                                             |
+| remaining goes negative                              | Return 0 (clamp to non-negative)                              | Negative remaining is confusing                                                    |
+| User creates rule tracking a non-existent user/model | Allow creation; status returns 0 usage                        | Don't validate scopeValue against existing data; the model/user might appear later |
+| Multiple rules for the same scope+metric             | All are evaluated independently                               | Users may want different thresholds (warning at 80%, critical at 95%)              |
+| Rule created mid-day for daily metric                | Evaluates from start of current day                           | Consistent period; don't start from rule creation time                             |
+| Timezone considerations                              | All periods in UTC                                            | Consistent, simple; documented for users                                           |
+| Deactivated rule reactivated                         | Evaluates normally from current period                        | No history of when it was inactive                                                 |
 
 ## Decisions Log
 
-| # | Decision | Alternatives Considered | Chosen Because |
-|---|----------|------------------------|----------------|
-| 1 | On-demand evaluation (not scheduled) | Background job on cron, event-driven | Simpler; always fresh data; workshop scope doesn't need push notifications |
-| 2 | UTC for all period calculations | User's local timezone, configurable TZ | Consistent behavior; no timezone complexity |
-| 3 | Alerts report only (don't block requests) | Enforce quotas by rejecting requests over threshold | PRD explicitly says alerts report but don't enforce; keeps proxy simple |
-| 4 | alertPercentage as separate field | Fixed at 80%, no alert concept | Flexible; users define their own warning level |
-| 5 | Clamp remaining to 0 (not negative) | Show negative remaining | Cleaner UX; "0 remaining" is clear |
+| #   | Decision                                  | Alternatives Considered                             | Chosen Because                                                             |
+| --- | ----------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------------------- |
+| 1   | On-demand evaluation (not scheduled)      | Background job on cron, event-driven                | Simpler; always fresh data; workshop scope doesn't need push notifications |
+| 2   | UTC for all period calculations           | User's local timezone, configurable TZ              | Consistent behavior; no timezone complexity                                |
+| 3   | Alerts report only (don't block requests) | Enforce quotas by rejecting requests over threshold | PRD explicitly says alerts report but don't enforce; keeps proxy simple    |
+| 4   | alertPercentage as separate field         | Fixed at 80%, no alert concept                      | Flexible; users define their own warning level                             |
+| 5   | Clamp remaining to 0 (not negative)       | Show negative remaining                             | Cleaner UX; "0 remaining" is clear                                         |
 
 ## Scope Boundaries
 
 ### In Scope
+
 - AlertRule Prisma model and migration
 - IAlertRepo interface and PrismaAlertRepository
 - AlertService with period calculation and evaluation logic
@@ -170,6 +178,7 @@ For each active rule:
 - API tests for all endpoints
 
 ### Out of Scope
+
 - Push notifications / webhooks when alerts trigger
 - Alert history / audit log of past evaluations
 - Email/Slack integration
@@ -178,11 +187,13 @@ For each active rule:
 ## Dependencies
 
 ### Depends On
+
 - F1 — IUsageRepo (for querying usage data), Express app, error classes, test infrastructure
 - F2 — Auth middleware
 - F4 — UsageLog data populated by the logging feature
 
 ### Depended On By
+
 - None (leaf feature)
 
 ## Architecture Notes
@@ -192,5 +203,6 @@ The AlertService depends on IAlertRepo (for rule CRUD) and IUsageRepo (for query
 The status endpoint evaluates ALL active rules for the user in a single request. For N rules, this means N usage queries. At workshop scale (< 10 rules per user), this is fine. A production system would batch or pre-aggregate.
 
 ---
+
 _This plan is the input for the Feature Planning skill._
 _Review this document, then run: "Generate task from plan: specs/plans/PLAN-F7-usage-alerts.md"_

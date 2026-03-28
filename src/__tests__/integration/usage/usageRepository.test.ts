@@ -139,7 +139,11 @@ describe("PrismaUsageRepository", () => {
   describe("findAll()", () => {
     it("returns all logs", async () => {
       for (let i = 0; i < 10; i++) {
-        await repo.create({ ...baseRecord, userId: `user-${i}`, model: i % 2 === 0 ? "llama3" : "mistral" });
+        await repo.create({
+          ...baseRecord,
+          userId: `user-${i}`,
+          model: i % 2 === 0 ? "llama3" : "mistral",
+        });
       }
 
       const results = await repo.findAll();

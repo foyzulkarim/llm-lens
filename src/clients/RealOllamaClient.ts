@@ -28,10 +28,11 @@ export class RealOllamaClient implements IOllamaClient {
       throw new OllamaResponseError(`Ollama returned status ${res.status}`);
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let data: any;
     try {
       data = await res.json();
-    } catch (err) {
+    } catch (_err) {
       throw new OllamaResponseError("Ollama returned non-JSON response");
     }
 

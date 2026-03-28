@@ -8,7 +8,10 @@ let prisma: PrismaClient;
 let dbPath: string;
 
 export async function setupTestDb(): Promise<PrismaClient> {
-  dbPath = path.join(os.tmpdir(), `llm-lens-test-${Date.now()}-${Math.random().toString(36).slice(2)}.db`);
+  dbPath = path.join(
+    os.tmpdir(),
+    `llm-lens-test-${Date.now()}-${Math.random().toString(36).slice(2)}.db`,
+  );
   const dbUrl = `file:${dbPath}`;
 
   execSync("npx prisma migrate deploy", {

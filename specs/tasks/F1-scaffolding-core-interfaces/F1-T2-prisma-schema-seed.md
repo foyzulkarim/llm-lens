@@ -15,6 +15,7 @@ Set up Prisma ORM with SQLite, define the ApiKey and UsageLog models with proper
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/prisma/seed.test.ts`
 
 ### Test Scenarios
@@ -51,15 +52,18 @@ Set up Prisma ORM with SQLite, define the ApiKey and UsageLog models with proper
 ## Files Expected
 
 **New files:**
+
 - `prisma/schema.prisma` — datasource, generator, ApiKey model, UsageLog model with indexes
 - `prisma/seed.ts` — seed script with API keys and usage log generation
 - `src/__tests__/prisma/seed.test.ts`
 
 **Modified files:**
+
 - `package.json` (add prisma dependencies, prisma.seed config)
 - `tsconfig.json` (ensure prisma/seed.ts is included)
 
 **Must NOT modify:**
+
 - `src/app.ts`
 - `src/server.ts`
 
@@ -72,5 +76,6 @@ Set up Prisma ORM with SQLite, define the ApiKey and UsageLog models with proper
 5. Verify tests pass
 
 ---
+
 _Generated from: specs/plans/PLAN-F1-scaffolding-core-interfaces.md_
 _Next step: "Implement task: specs/tasks/F1-scaffolding-core-interfaces/F1-T2-prisma-schema-seed.md" using the TDD skill._

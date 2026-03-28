@@ -15,27 +15,33 @@ Add the ModelPricing Prisma model, run the migration, define the IPricingRepo in
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/integration/pricing/pricingRepository.test.ts`
 
 ### Test Scenarios
 
 #### PrismaPricingRepository — create()
+
 - **creates a pricing entry with all fields** — GIVEN valid pricing data for model "llama3" WHEN create() is called THEN a row exists in ModelPricing with correct modelName, costPerPromptToken, costPerCompletionToken, currency, and effectiveDate
 - **rejects duplicate modelName + effectiveDate** — GIVEN a pricing entry for "llama3" effective 2026-01-01 already exists WHEN create() is called with the same modelName and effectiveDate THEN a ConflictError is thrown
 
 #### PrismaPricingRepository — findAll()
+
 - **returns all pricing entries** — GIVEN 3 pricing entries for different models WHEN findAll() is called THEN all 3 entries are returned
 - **returns empty array when no pricing exists** — GIVEN an empty ModelPricing table WHEN findAll() is called THEN returns []
 
 #### PrismaPricingRepository — update()
+
 - **updates an existing pricing entry** — GIVEN a pricing entry with id "abc" WHEN update("abc", { costPerPromptToken: 0.000005 }) is called THEN the entry reflects the new cost
 - **throws NotFoundError for unknown id** — GIVEN no pricing entry with id "unknown" WHEN update("unknown", data) is called THEN a NotFoundError is thrown
 
 #### PrismaPricingRepository — delete()
+
 - **deletes an existing pricing entry** — GIVEN a pricing entry with id "abc" WHEN delete("abc") is called THEN the entry no longer exists in the table
 - **throws NotFoundError for unknown id** — GIVEN no pricing entry with id "unknown" WHEN delete("unknown") is called THEN a NotFoundError is thrown
 
 #### PrismaPricingRepository — findActivePricing()
+
 - **returns the most recent pricing on or before the given date** — GIVEN pricing for "llama3" effective 2026-01-01 and 2026-03-01 WHEN findActivePricing("llama3", 2026-03-15) THEN the 2026-03-01 entry is returned
 - **returns null when no pricing exists for the model** — GIVEN no pricing for "mistral" WHEN findActivePricing("mistral", 2026-03-15) THEN null is returned
 - **returns null when all pricing entries are in the future** — GIVEN pricing for "llama3" effective 2026-06-01 WHEN findActivePricing("llama3", 2026-03-15) THEN null is returned
@@ -61,14 +67,17 @@ Add the ModelPricing Prisma model, run the migration, define the IPricingRepo in
 ## Files Expected
 
 **New files:**
+
 - `src/interfaces/IPricingRepo.ts` — IPricingRepo interface
 - `src/pricing/pricingRepository.ts` — PrismaPricingRepository implementing IPricingRepo
 - `src/__tests__/integration/pricing/pricingRepository.test.ts`
 
 **Modified files:**
+
 - `prisma/schema.prisma` — add ModelPricing model with composite unique index
 
 **Must NOT modify:**
+
 - `src/interfaces/IUsageRepo.ts`
 - `src/usage/usageRepository.ts`
 
@@ -82,5 +91,6 @@ Add the ModelPricing Prisma model, run the migration, define the IPricingRepo in
 6. Write integration tests for findActivePricing() — implement the pricing lookup query
 
 ---
+
 _Generated from: specs/plans/PLAN-F6-cost-tracking.md_
 _Next step: "Implement task: specs/tasks/F6-cost-tracking/F6-T1-model-pricing-schema-repository.md" using the TDD skill._

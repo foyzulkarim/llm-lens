@@ -18,9 +18,7 @@ describe("MockOllamaClient", () => {
 
   it("calculates prompt tokens from message lengths", async () => {
     const client = new MockOllamaClient();
-    const messages: ChatRequest["messages"] = [
-      { role: "user", content: "a".repeat(100) },
-    ];
+    const messages: ChatRequest["messages"] = [{ role: "user", content: "a".repeat(100) }];
 
     const response = await client.chat({ model: "llama3", messages });
 
@@ -63,9 +61,7 @@ describe("MockOllamaClient", () => {
 
   it("calculates totalTokens", async () => {
     const client = new MockOllamaClient({ completionTokens: 20 });
-    const messages: ChatRequest["messages"] = [
-      { role: "user", content: "a".repeat(80) },
-    ];
+    const messages: ChatRequest["messages"] = [{ role: "user", content: "a".repeat(80) }];
 
     const response = await client.chat({ model: "llama3", messages });
 

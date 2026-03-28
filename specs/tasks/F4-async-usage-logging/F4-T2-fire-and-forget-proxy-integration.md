@@ -5,7 +5,7 @@
 > **Epic:** F4 — Async Usage Logging
 > **Effort:** m
 > **Priority:** critical
-> **Depends on:** F4-T1-usage-logger-service.md, F3-* (proxy handler)
+> **Depends on:** F4-T1-usage-logger-service.md, F3-\* (proxy handler)
 > **Plan source:** specs/plans/PLAN-F4-async-usage-logging.md
 
 ## Description
@@ -15,6 +15,7 @@ Integrate `UsageLoggerService` into the proxy chat handler using the fire-and-fo
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/unit/proxy/chatHandler.usageLogging.test.ts`
 
 ### Test Scenarios
@@ -50,6 +51,7 @@ Integrate `UsageLoggerService` into the proxy chat handler using the fire-and-fo
 ### Testing the Async Ordering
 
 To verify `res.json()` is called before `usageLogger.log()` resolves:
+
 1. Mock `usageLogger.log()` to return a promise that resolves after a delay
 2. Mock `res.json()` to record when it was called
 3. After calling the handler, assert `res.json()` was called immediately
@@ -66,13 +68,16 @@ To verify `res.json()` is called before `usageLogger.log()` resolves:
 ## Files Expected
 
 **New files:**
+
 - `src/__tests__/unit/proxy/chatHandler.usageLogging.test.ts`
 
 **Modified files:**
+
 - `src/proxy/chatHandler.ts` (or equivalent proxy controller) — add usageLogger dependency and fire-and-forget call
 - `src/app.ts` or DI setup — wire UsageLoggerService into the proxy handler
 
 **Must NOT modify:**
+
 - `src/usage/usageLoggerService.ts` (built in T1)
 - `src/usage/usageRepository.ts` (built in F1-T5)
 
@@ -86,5 +91,6 @@ To verify `res.json()` is called before `usageLogger.log()` resolves:
 6. Write test: exactly one log entry per request → verify no duplicate calls
 
 ---
+
 _Generated from: specs/plans/PLAN-F4-async-usage-logging.md_
 _Next step: "Implement task: specs/tasks/F4-async-usage-logging/F4-T2-fire-and-forget-proxy-integration.md" using the TDD skill._

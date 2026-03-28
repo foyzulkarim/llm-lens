@@ -15,6 +15,7 @@ Initialize the greenfield Node.js + TypeScript + Express project. Set up all con
 ## Test Plan
 
 ### Test File(s)
+
 - No dedicated test file — this is verified by running `npm run build` and `npm test` successfully.
 
 ### Verification Scenarios
@@ -47,6 +48,7 @@ Initialize the greenfield Node.js + TypeScript + Express project. Set up all con
 ## Files Expected
 
 **New files:**
+
 - `package.json`
 - `tsconfig.json`
 - `jest.config.ts`
@@ -59,8 +61,10 @@ Initialize the greenfield Node.js + TypeScript + Express project. Set up all con
 **Modified files:** None
 
 **Must NOT modify:**
+
 - `specs/` directory
 
 ---
+
 _Generated from: specs/plans/PLAN-F1-scaffolding-core-interfaces.md_
 _Next step: "Implement task: specs/tasks/F1-scaffolding-core-interfaces/F1-T1-project-scaffolding.md" using the TDD skill._
