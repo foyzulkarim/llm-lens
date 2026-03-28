@@ -1,0 +1,33 @@
+{
+  "name": "llm-lens",
+  "version": "1.0.0",
+  "description": "Ollama Usage Intelligence API",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon",
+    "start": "node dist/server.js",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.4",
+    "@types/supertest": "^6.0.2",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.9",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
