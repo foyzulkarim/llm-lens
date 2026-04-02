@@ -1,6 +1,14 @@
 import { IOllamaClient, ChatRequest, ChatResponse } from "../interfaces/IOllamaClient";
 import { OllamaConnectionError, OllamaResponseError } from "../errors";
 
+interface OllamaChatResponse {
+  model: string;
+  message: { role: string; content: string };
+  done: boolean;
+  prompt_eval_count?: number;
+  eval_count?: number;
+}
+
 export class RealOllamaClient implements IOllamaClient {
   private baseUrl: string;
   private signal: AbortSignal;
@@ -20,18 +28,18 @@ export class RealOllamaClient implements IOllamaClient {
         body: JSON.stringify({ ...request, stream: false }),
         signal: this.signal,
       });
-    } catch (err) {
-      throw new OllamaConnectionError("Failed to connect to Ollama", err as Error);
+    } catch (err: unknown) {
+      const cause = err instanceof Error ? err : new Error(String(err));
+      throw new OllamaConnectionError("Failed to connect to Ollama", cause);
     }
 
     if (!res.ok) {
       throw new OllamaResponseError(`Ollama returned status ${res.status}`);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let data: any;
+    let data: OllamaChatResponse;
     try {
-      data = await res.json();
+      data = (await res.json()) as OllamaChatResponse;
     } catch (_err) {
       throw new OllamaResponseError("Ollama returned non-JSON response");
     }

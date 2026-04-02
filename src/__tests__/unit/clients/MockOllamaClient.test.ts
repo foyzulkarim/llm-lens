@@ -72,7 +72,9 @@ describe("MockOllamaClient", () => {
   it("throws error for error-model", async () => {
     const client = new MockOllamaClient();
 
-    await expect(client.chat({ ...baseRequest, model: "error-model" })).rejects.toThrow();
+    await expect(client.chat({ ...baseRequest, model: "error-model" })).rejects.toThrow(
+      "Mock error for error-model",
+    );
   });
 
   it("returns correct model in response", async () => {
