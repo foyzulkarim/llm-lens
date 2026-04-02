@@ -13,7 +13,7 @@ export class PrismaUsageRepository implements IUsageRepo {
     return this.prisma.usageLog.findMany({
       where: {
         userId,
-        ...(from || to ? { createdAt: { gte: from, lte: to } } : {}),
+        ...buildDateFilter(from, to),
       },
     });
   }
@@ -22,7 +22,7 @@ export class PrismaUsageRepository implements IUsageRepo {
     return this.prisma.usageLog.findMany({
       where: {
         model,
-        ...(from || to ? { createdAt: { gte: from, lte: to } } : {}),
+        ...buildDateFilter(from, to),
       },
     });
   }
@@ -30,8 +30,19 @@ export class PrismaUsageRepository implements IUsageRepo {
   async findAll(from?: Date, to?: Date): Promise<UsageLogEntry[]> {
     return this.prisma.usageLog.findMany({
       where: {
-        ...(from || to ? { createdAt: { gte: from, lte: to } } : {}),
+        ...buildDateFilter(from, to),
       },
     });
   }
+}
+
+function buildDateFilter(from?: Date, to?: Date): { createdAt?: { gte?: Date; lte?: Date } } {
+  const filter: { createdAt?: { gte?: Date; lte?: Date } } = {};
+  if (from !== undefined) {
+    filter.createdAt = { gte: from };
+  }
+  if (to !== undefined) {
+    filter.createdAt = { ...filter.createdAt, lte: to };
+  }
+  return filter;
 }

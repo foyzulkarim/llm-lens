@@ -22,7 +22,7 @@ export class MockOllamaClient implements IOllamaClient {
     await new Promise((resolve) => setTimeout(resolve, this.latencyMs));
 
     const promptTokens = Math.floor(
-      request.messages.reduce((sum, m) => sum + m.content.length, 0) / 4,
+      request.messages.reduce<number>((sum, m) => sum + m.content.length, 0) / 4,
     );
 
     return {
