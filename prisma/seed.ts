@@ -24,7 +24,15 @@ function pickUser(): string {
 }
 
 function generateLogs(now: Date) {
-  const logs = [];
+  const logs: {
+    userId: string;
+    model: string;
+    promptTokens: number;
+    completionTokens: number;
+    totalTokens: number;
+    latencyMs: number;
+    createdAt: Date;
+  }[] = [];
   for (let i = 0; i < TOTAL_LOGS; i++) {
     const daysAgo = randomInt(0, DAY_SPREAD - 1);
     const createdAt = new Date(now);

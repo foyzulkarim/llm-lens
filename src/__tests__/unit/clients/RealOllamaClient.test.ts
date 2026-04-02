@@ -89,11 +89,26 @@ describe("RealOllamaClient", () => {
     await expect(client.chat(baseRequest)).rejects.toThrow(OllamaResponseError);
   });
 
-  it("respects timeout (30s default)", () => {
+  it("creates AbortSignal.timeout per request", async () => {
+    mockFetchSuccess(validOllamaResponse);
     const spy = jest.spyOn(AbortSignal, "timeout");
-    new RealOllamaClient("http://localhost:11434");
+    const client = new RealOllamaClient("http://localhost:11434");
 
+    await client.chat(baseRequest);
+    await client.chat(baseRequest);
+
+    expect(spy).toHaveBeenCalledTimes(2);
     expect(spy).toHaveBeenCalledWith(30000);
+  });
+
+  it("accepts custom timeoutMs", async () => {
+    mockFetchSuccess(validOllamaResponse);
+    const spy = jest.spyOn(AbortSignal, "timeout");
+    const client = new RealOllamaClient("http://localhost:11434", 5000);
+
+    await client.chat(baseRequest);
+
+    expect(spy).toHaveBeenCalledWith(5000);
   });
 
   it("sends messages array in request body", async () => {

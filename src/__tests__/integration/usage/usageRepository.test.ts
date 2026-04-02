@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { setupTestDb, resetDb, teardownTestDb } from "../../helpers/testDb";
+import { setupTestDb, TestDbHandle } from "../../helpers/testDb";
 import { PrismaUsageRepository } from "../../../usage/usageRepository";
 import { UsageRecord } from "../../../interfaces/IUsageLogger";
 
@@ -15,18 +15,20 @@ const baseRecord: UsageRecord = {
 describe("PrismaUsageRepository", () => {
   let prisma: PrismaClient;
   let repo: PrismaUsageRepository;
+  let handle: TestDbHandle;
 
   beforeAll(async () => {
-    prisma = await setupTestDb();
+    handle = await setupTestDb();
+    prisma = handle.prisma;
     repo = new PrismaUsageRepository(prisma);
   });
 
   afterAll(async () => {
-    await teardownTestDb();
+    await handle.teardown();
   });
 
   afterEach(async () => {
-    await resetDb();
+    await handle.resetDb();
   });
 
   describe("create()", () => {

@@ -11,11 +11,11 @@ interface OllamaChatResponse {
 
 export class RealOllamaClient implements IOllamaClient {
   private baseUrl: string;
-  private signal: AbortSignal;
+  private timeoutMs: number;
 
   constructor(baseUrl: string, timeoutMs = 30000) {
     this.baseUrl = baseUrl;
-    this.signal = AbortSignal.timeout(timeoutMs);
+    this.timeoutMs = timeoutMs;
   }
 
   async chat(request: ChatRequest): Promise<ChatResponse> {
@@ -26,7 +26,7 @@ export class RealOllamaClient implements IOllamaClient {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...request, stream: false }),
-        signal: this.signal,
+        signal: AbortSignal.timeout(this.timeoutMs),
       });
     } catch (err: unknown) {
       const cause = err instanceof Error ? err : new Error(String(err));

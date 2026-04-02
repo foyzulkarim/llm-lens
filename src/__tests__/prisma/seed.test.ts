@@ -1,20 +1,22 @@
-import { PrismaClient } from "@prisma/client";
 import { seed } from "../../../prisma/seed";
+import { PrismaClient } from "@prisma/client";
+import { setupTestDb, TestDbHandle } from "../helpers/testDb";
 
 describe("Seed Script", () => {
   let prisma: PrismaClient;
+  let handle: TestDbHandle;
 
-  beforeAll(() => {
-    prisma = new PrismaClient();
+  beforeAll(async () => {
+    handle = await setupTestDb();
+    prisma = handle.prisma;
   });
 
   afterAll(async () => {
-    await prisma.$disconnect();
+    await handle.teardown();
   });
 
   beforeEach(async () => {
-    await prisma.usageLog.deleteMany();
-    await prisma.apiKey.deleteMany();
+    await handle.resetDb();
   });
 
   it("seed is idempotent", async () => {

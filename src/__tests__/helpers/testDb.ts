@@ -4,11 +4,14 @@ import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
 
-let prisma: PrismaClient;
-let dbPath: string;
+export interface TestDbHandle {
+  prisma: PrismaClient;
+  resetDb: () => Promise<void>;
+  teardown: () => Promise<void>;
+}
 
-export async function setupTestDb(): Promise<PrismaClient> {
-  dbPath = path.join(
+export async function setupTestDb(): Promise<TestDbHandle> {
+  const dbPath = path.join(
     os.tmpdir(),
     `llm-lens-test-${Date.now()}-${Math.random().toString(36).slice(2)}.db`,
   );
@@ -19,22 +22,23 @@ export async function setupTestDb(): Promise<PrismaClient> {
     stdio: "pipe",
   });
 
-  prisma = new PrismaClient({
+  const prisma = new PrismaClient({
     datasources: { db: { url: dbUrl } },
   });
 
   await prisma.$connect();
-  return prisma;
-}
 
-export async function resetDb(): Promise<void> {
-  await prisma.usageLog.deleteMany();
-  await prisma.apiKey.deleteMany();
-}
+  const resetDb = async () => {
+    await prisma.usageLog.deleteMany();
+    await prisma.apiKey.deleteMany();
+  };
 
-export async function teardownTestDb(): Promise<void> {
-  await prisma.$disconnect();
-  if (fs.existsSync(dbPath)) {
-    fs.unlinkSync(dbPath);
-  }
+  const teardown = async () => {
+    await prisma.$disconnect();
+    if (fs.existsSync(dbPath)) {
+      fs.unlinkSync(dbPath);
+    }
+  };
+
+  return { prisma, resetDb, teardown };
 }

@@ -1,25 +1,23 @@
-import { setupTestDb, resetDb, teardownTestDb } from "./testDb";
-import { PrismaClient } from "@prisma/client";
+import { setupTestDb } from "./testDb";
 
 describe("testDb helper", () => {
-  let prisma: PrismaClient;
-
-  beforeAll(async () => {
-    prisma = await setupTestDb();
-  });
+  const handlePromise = setupTestDb();
 
   afterAll(async () => {
-    await teardownTestDb();
+    const handle = await handlePromise;
+    await handle.teardown();
   });
 
   it("provides a working Prisma client", async () => {
-    const result = await prisma.$queryRaw<{ result: number }[]>`SELECT 1 AS result`;
+    const handle = await handlePromise;
+    const result = await handle.prisma.$queryRaw<{ result: number }[]>`SELECT 1 AS result`;
 
     expect(Number(result[0].result)).toBe(1);
   });
 
   it("resetDb clears all tables", async () => {
-    await prisma.usageLog.create({
+    const handle = await handlePromise;
+    await handle.prisma.usageLog.create({
       data: {
         userId: "user-1",
         model: "llama3",
@@ -30,9 +28,9 @@ describe("testDb helper", () => {
       },
     });
 
-    await resetDb();
+    await handle.resetDb();
 
-    const logs = await prisma.usageLog.findMany();
+    const logs = await handle.prisma.usageLog.findMany();
     expect(logs).toHaveLength(0);
   });
 });
