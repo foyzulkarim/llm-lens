@@ -5,7 +5,7 @@
 > **Epic:** F2 — Auth Middleware
 > **Effort:** s
 > **Priority:** critical
-> **Depends on:** P1-E1-T1-project-scaffolding.md, P1-E1-T2-prisma-schema-seed.md, P1-E1-T5-usage-repo-test-infra.md
+> **Depends on:** F1-T1-project-scaffolding.md, F1-T2-prisma-schema-seed.md, F1-T5-usage-repo-test-infra.md
 > **Plan source:** specs/plans/PLAN-F2-auth-middleware.md
 
 ## Description
@@ -15,6 +15,7 @@ Define the IApiKeyRepo interface and implement PrismaApiKeyRepository as its con
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/integration/auth/apiKeyRepository.test.ts`
 
 ### Test Scenarios
@@ -24,7 +25,7 @@ Define the IApiKeyRepo interface and implement PrismaApiKeyRepository as its con
 - **returns ApiKey when key exists and is active** — GIVEN an active API key stored in the database WHEN findByKey(key) is called THEN the full ApiKey record is returned with correct userId, userName, key, and isActive=true
 - **returns ApiKey when key exists but is inactive** — GIVEN an inactive API key stored in the database WHEN findByKey(key) is called THEN the ApiKey record is returned with isActive=false (repo does not filter; that is the provider's job)
 - **returns null when key does not exist** — GIVEN no matching key in the database WHEN findByKey("oui-nonexistent") is called THEN null is returned
-- **trims whitespace before lookup** — GIVEN an active API key "oui-abc123" in the database WHEN findByKey("  oui-abc123  ") is called THEN the matching ApiKey record is returned
+- **trims whitespace before lookup** — GIVEN an active API key "oui-abc123" in the database WHEN findByKey(" oui-abc123 ") is called THEN the matching ApiKey record is returned
 
 #### PrismaApiKeyRepository — create()
 
@@ -53,14 +54,17 @@ Define the IApiKeyRepo interface and implement PrismaApiKeyRepository as its con
 ## Files Expected
 
 **New files:**
+
 - `src/interfaces/IApiKeyRepo.ts` — IApiKeyRepo interface definition
 - `src/auth/apiKeyRepository.ts` — PrismaApiKeyRepository implementing IApiKeyRepo
 - `src/__tests__/integration/auth/apiKeyRepository.test.ts`
 
 **Modified files:**
+
 - `src/interfaces/index.ts` — add IApiKeyRepo to barrel export
 
 **Must NOT modify:**
+
 - `prisma/schema.prisma` (ApiKey model defined in F1-T2)
 - `src/interfaces/IAuthProvider.ts` (defined in F1-T3)
 
@@ -72,5 +76,6 @@ Define the IApiKeyRepo interface and implement PrismaApiKeyRepository as its con
 4. Add IApiKeyRepo to barrel export
 
 ---
+
 _Generated from: specs/plans/PLAN-F2-auth-middleware.md_
-_Next step: "Implement task: specs/tasks/P1-E2-T1-api-key-repo.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F2-auth-middleware/F2-T1-api-key-repo.md" using the TDD skill._

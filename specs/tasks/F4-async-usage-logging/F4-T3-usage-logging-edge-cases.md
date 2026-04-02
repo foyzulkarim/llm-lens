@@ -5,7 +5,7 @@
 > **Epic:** F4 — Async Usage Logging
 > **Effort:** s
 > **Priority:** high
-> **Depends on:** P2-E1-T2-fire-and-forget-proxy-integration.md
+> **Depends on:** F4-T2-fire-and-forget-proxy-integration.md
 > **Plan source:** specs/plans/PLAN-F4-async-usage-logging.md
 
 ## Description
@@ -15,6 +15,7 @@ Handle defensive edge cases in the usage logging path: missing user context (bel
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/unit/proxy/chatHandler.usageLogging.edge.test.ts`
 
 ### Test Scenarios
@@ -56,12 +57,15 @@ Handle defensive edge cases in the usage logging path: missing user context (bel
 ## Files Expected
 
 **New files:**
+
 - `src/__tests__/unit/proxy/chatHandler.usageLogging.edge.test.ts`
 
 **Modified files:**
+
 - `src/proxy/chatHandler.ts` (or equivalent) — add guard clause for missing user context
 
 **Must NOT modify:**
+
 - `src/usage/usageLoggerService.ts`
 - `src/usage/usageRepository.ts`
 
@@ -74,5 +78,6 @@ Handle defensive edge cases in the usage logging path: missing user context (bel
 5. Write test: concurrent requests produce independent logs → verify no shared mutable state
 
 ---
+
 _Generated from: specs/plans/PLAN-F4-async-usage-logging.md_
-_Next step: "Implement task: specs/tasks/P2-E1-T3-usage-logging-edge-cases.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F4-async-usage-logging/F4-T3-usage-logging-edge-cases.md" using the TDD skill._

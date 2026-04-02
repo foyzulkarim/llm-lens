@@ -5,7 +5,7 @@
 > **Epic:** F6 — Cost Tracking & Reporting
 > **Effort:** l
 > **Priority:** medium
-> **Depends on:** P3-E2-T1-model-pricing-schema-repository.md, P1-E1-T5-usage-repo-test-infra.md
+> **Depends on:** F6-T1-model-pricing-schema-repository.md, F1-T5-usage-repo-test-infra.md
 > **Plan source:** specs/plans/PLAN-F6-cost-tracking.md
 
 ## Description
@@ -15,11 +15,13 @@ Implement CostService, the core business logic for cost tracking. The service de
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/unit/pricing/costService.test.ts`
 
 ### Test Scenarios
 
 #### CostService — calculateCosts()
+
 - **calculates cost for a single usage entry with active pricing** — GIVEN 1 usage log for "llama3" (100 prompt tokens, 50 completion tokens) and pricing (costPerPromptToken=0.000001, costPerCompletionToken=0.000002) WHEN calculateCosts() is called THEN totalCost = "0.000200", byModel has 1 entry with correct promptCost and completionCost
 - **applies date-based pricing (uses pricing active at time of request)** — GIVEN pricing for "llama3" at 0.000001 effective 2026-01-01 and 0.000005 effective 2026-03-01, and a usage log timestamped 2026-03-15 WHEN calculateCosts() is called THEN the 0.000005 pricing is used for calculation
 - **handles pricing change mid-period** — GIVEN pricing for "llama3" changing on 2026-03-01 and two usage logs (one on 2026-02-15, one on 2026-03-15) WHEN calculateCosts() for 2026-02-01 to 2026-03-31 THEN each log uses the pricing active at its own timestamp
@@ -52,6 +54,7 @@ Implement CostService, the core business logic for cost tracking. The service de
 ## Files Expected
 
 **New files:**
+
 - `src/pricing/costService.ts` — CostService class with calculateCosts() method
 - `src/pricing/types.ts` — TypeScript types for CostReport, ModelCostBreakdown, UserCostBreakdown, UnpricedModel
 - `src/__tests__/unit/pricing/costService.test.ts`
@@ -59,6 +62,7 @@ Implement CostService, the core business logic for cost tracking. The service de
 **Modified files:** None
 
 **Must NOT modify:**
+
 - `src/interfaces/IPricingRepo.ts`
 - `src/interfaces/IUsageRepo.ts`
 - `src/pricing/pricingRepository.ts`
@@ -75,5 +79,6 @@ Implement CostService, the core business logic for cost tracking. The service de
 8. Write test for zero-cost pricing — verify edge case arithmetic
 
 ---
+
 _Generated from: specs/plans/PLAN-F6-cost-tracking.md_
-_Next step: "Implement task: specs/tasks/P3-E2-T3-cost-calculation-service.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F6-cost-tracking/F6-T3-cost-calculation-service.md" using the TDD skill._

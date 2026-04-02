@@ -5,7 +5,7 @@
 > **Epic:** F8 — Conversation History & Search
 > **Effort:** m
 > **Priority:** medium
-> **Depends on:** P1-E1-T1-project-scaffolding.md, P1-E1-T2-prisma-schema-seed.md, P1-E1-T5-usage-repo-test-infra.md
+> **Depends on:** F1-T1-project-scaffolding.md, F1-T2-prisma-schema-seed.md, F1-T5-usage-repo-test-infra.md
 > **Plan source:** specs/plans/PLAN-F8-conversation-history.md
 
 ## Description
@@ -15,6 +15,7 @@ Add the Conversation and Message Prisma models to the schema, run the migration,
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/integration/conversations/conversationRepository.test.ts`
 
 ### Test Scenarios
@@ -64,11 +65,13 @@ Add the Conversation and Message Prisma models to the schema, run the migration,
 ## Files Expected
 
 **New files:**
+
 - `src/interfaces/IConversationRepo.ts` — IConversationRepo interface definition
 - `src/conversations/conversationRepository.ts` — PrismaConversationRepository implementing IConversationRepo
 - `src/__tests__/integration/conversations/conversationRepository.test.ts`
 
 **Modified files:**
+
 - `prisma/schema.prisma` — add Conversation and Message models with indexes and relations
 - `src/interfaces/index.ts` — add IConversationRepo to barrel export
 
@@ -83,5 +86,6 @@ Add the Conversation and Message Prisma models to the schema, run the migration,
 7. Add IConversationRepo to barrel export
 
 ---
+
 _Generated from: specs/plans/PLAN-F8-conversation-history.md_
-_Next step: "Implement task: specs/tasks/P3-E4-T1-conversation-models-repo.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F8-conversation-history/F8-T1-conversation-models-repo.md" using the TDD skill._

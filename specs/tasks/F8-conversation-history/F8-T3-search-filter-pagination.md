@@ -5,7 +5,7 @@
 > **Epic:** F8 — Conversation History & Search
 > **Effort:** m
 > **Priority:** medium
-> **Depends on:** P3-E4-T1-conversation-models-repo.md, P3-E4-T2-save-conversation-endpoint.md
+> **Depends on:** F8-T1-conversation-models-repo.md, F8-T2-save-conversation-endpoint.md
 > **Plan source:** specs/plans/PLAN-F8-conversation-history.md
 
 ## Description
@@ -15,6 +15,7 @@ Implement the ConversationService `listConversations` method that builds search/
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/unit/conversations/conversationService.list.test.ts`
 
 ### Test Scenarios
@@ -57,9 +58,11 @@ Implement the ConversationService `listConversations` method that builds search/
 ## Files Expected
 
 **New files:**
+
 - `src/__tests__/unit/conversations/conversationService.list.test.ts`
 
 **Modified files:**
+
 - `src/conversations/conversationService.ts` — add listConversations() method
 
 ## TDD Sequence
@@ -71,5 +74,6 @@ Implement the ConversationService `listConversations` method that builds search/
 5. Write test for short keyword rejection -> add validation guard
 
 ---
+
 _Generated from: specs/plans/PLAN-F8-conversation-history.md_
-_Next step: "Implement task: specs/tasks/P3-E4-T3-search-filter-pagination.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F8-conversation-history/F8-T3-search-filter-pagination.md" using the TDD skill._

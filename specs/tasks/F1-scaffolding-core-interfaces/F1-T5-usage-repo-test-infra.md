@@ -5,7 +5,7 @@
 > **Epic:** F1 — Scaffolding & Core Interfaces
 > **Effort:** m
 > **Priority:** high
-> **Depends on:** P1-E1-T2-prisma-schema-seed.md, P1-E1-T3-interfaces-errors-middleware.md
+> **Depends on:** F1-T2-prisma-schema-seed.md, F1-T3-interfaces-errors-middleware.md
 > **Plan source:** specs/plans/PLAN-F1-scaffolding-core-interfaces.md
 
 ## Description
@@ -15,6 +15,7 @@ Implement PrismaUsageRepository (the IUsageRepo concrete implementation) and bui
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/integration/usage/usageRepository.test.ts`
 - `src/__tests__/helpers/testDb.test.ts` (sanity check for the helper itself)
 
@@ -74,6 +75,7 @@ For SQLite, Testcontainers may be overkill. An alternative is to create a tempor
 ## Files Expected
 
 **New files:**
+
 - `src/usage/usageRepository.ts` — PrismaUsageRepository implementing IUsageRepo
 - `src/__tests__/helpers/testDb.ts` — test database setup/teardown utility
 - `src/__tests__/helpers/testApp.ts` — Supertest app factory
@@ -81,9 +83,11 @@ For SQLite, Testcontainers may be overkill. An alternative is to create a tempor
 - `src/__tests__/helpers/testDb.test.ts`
 
 **Modified files:**
+
 - `jest.config.ts` (add integration test project/pattern if not already configured)
 
 **Must NOT modify:**
+
 - `src/interfaces/` (already defined in T3)
 - `prisma/schema.prisma` (already defined in T2)
 
@@ -95,5 +99,6 @@ For SQLite, Testcontainers may be overkill. An alternative is to create a tempor
 4. Build testApp helper (depends on app.ts and MockOllamaClient existing)
 
 ---
+
 _Generated from: specs/plans/PLAN-F1-scaffolding-core-interfaces.md_
-_Next step: "Implement task: specs/tasks/P1-E1-T5-usage-repo-test-infra.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F1-scaffolding-core-interfaces/F1-T5-usage-repo-test-infra.md" using the TDD skill._

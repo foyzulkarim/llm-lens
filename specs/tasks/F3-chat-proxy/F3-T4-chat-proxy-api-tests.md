@@ -5,7 +5,7 @@
 > **Epic:** F3 — Chat Proxy Endpoint
 > **Effort:** m
 > **Priority:** high
-> **Depends on:** P1-E3-T3-chat-controller-route.md, P1-E1-T5-usage-repo-test-infra.md
+> **Depends on:** F3-T3-chat-controller-route.md, F1-T5-usage-repo-test-infra.md
 > **Plan source:** specs/plans/PLAN-F3-chat-proxy.md
 
 ## Description
@@ -15,6 +15,7 @@ Write API-level integration tests for `POST /api/chat` using Supertest against t
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/api/chat.api.test.ts`
 
 ### Test Scenarios
@@ -68,13 +69,16 @@ Write API-level integration tests for `POST /api/chat` using Supertest against t
 ## Files Expected
 
 **New files:**
+
 - `src/__tests__/api/chat.api.test.ts`
 
 **Modified files:**
+
 - `src/middleware/errorHandler.ts` — add mappings for OllamaConnectionError (502) and OllamaResponseError (502) if not already present
 - `src/__tests__/helpers/` — test app factory or test setup utilities if needed
 
 **Must NOT modify:**
+
 - `src/services/ProxyService.ts`
 - `src/controllers/ProxyController.ts`
 - `src/middleware/validateChatRequest.ts`
@@ -88,5 +92,6 @@ Write API-level integration tests for `POST /api/chat` using Supertest against t
 5. Write edge case test (no latencyMs in response) -> verify response shape
 
 ---
+
 _Generated from: specs/plans/PLAN-F3-chat-proxy.md_
-_Next step: "Implement task: specs/tasks/P1-E3-T4-chat-proxy-api-tests.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F3-chat-proxy/F3-T4-chat-proxy-api-tests.md" using the TDD skill._

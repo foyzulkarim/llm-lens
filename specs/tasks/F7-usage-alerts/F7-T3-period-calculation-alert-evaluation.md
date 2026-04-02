@@ -5,7 +5,7 @@
 > **Epic:** F7 — Usage Alerts & Thresholds
 > **Effort:** m
 > **Priority:** medium
-> **Depends on:** P3-E3-T1-alert-rule-model-repository.md
+> **Depends on:** F7-T1-alert-rule-model-repository.md
 > **Plan source:** specs/plans/PLAN-F7-usage-alerts.md
 
 ## Description
@@ -15,33 +15,42 @@ Implement the AlertService containing: (1) a pure `calculatePeriod` function tha
 ## Test Plan
 
 ### Test File(s)
+
 - `src/services/__tests__/alertService.test.ts`
 
 ### Test Scenarios
 
 #### calculatePeriod — daily metric
+
 - **returns start and end of current UTC day** — GIVEN metric="daily" and a reference date of 2026-03-28T14:30:00Z WHEN calculatePeriod is called THEN start is 2026-03-28T00:00:00.000Z and end is 2026-03-28T23:59:59.999Z
 
 #### calculatePeriod — monthly metric
+
 - **returns start and end of current UTC month** — GIVEN metric="monthly" and a reference date of 2026-03-15T10:00:00Z WHEN calculatePeriod is called THEN start is 2026-03-01T00:00:00.000Z and end is 2026-03-31T23:59:59.999Z
 - **handles February in a non-leap year** — GIVEN metric="monthly" and a reference date of 2027-02-10T00:00:00Z WHEN calculatePeriod is called THEN end is 2027-02-28T23:59:59.999Z
 
 #### evaluateRule — under threshold
+
 - **reports no alerts when usage is below alert percentage** — GIVEN a rule with tokenThreshold=10000 and alertPercentage=80 WHEN current usage is 5000 tokens THEN percentageConsumed=50.0, alertTriggered=false, thresholdBreached=false, remaining=5000
 
 #### evaluateRule — at alert percentage
+
 - **triggers alert at exact alert percentage** — GIVEN a rule with tokenThreshold=10000 and alertPercentage=80 WHEN current usage is 8000 tokens THEN percentageConsumed=80.0, alertTriggered=true, thresholdBreached=false, remaining=2000
 
 #### evaluateRule — at exact threshold
+
 - **breaches threshold at exact limit** — GIVEN a rule with tokenThreshold=10000 and alertPercentage=80 WHEN current usage is 10000 tokens THEN percentageConsumed=100.0, alertTriggered=true, thresholdBreached=true, remaining=0
 
 #### evaluateRule — over threshold
+
 - **shows percentage over 100 and clamps remaining to 0** — GIVEN a rule with tokenThreshold=10000 and alertPercentage=80 WHEN current usage is 12000 tokens THEN percentageConsumed=120.0, alertTriggered=true, thresholdBreached=true, remaining=0
 
 #### evaluateRule — no usage data
+
 - **returns zero usage when no logs exist for the period** — GIVEN a rule with tokenThreshold=10000 and alertPercentage=80 WHEN usage repo returns 0 for the period THEN percentageConsumed=0.0, alertTriggered=false, thresholdBreached=false, remaining=10000
 
 #### evaluateRule — model scope
+
 - **queries by model name for model-scoped rules** — GIVEN a rule with scope="model" and scopeValue="llama3" WHEN evaluateRule is called THEN IUsageRepo is queried with model="llama3" and the correct period range
 
 ## Implementation Notes
@@ -67,10 +76,12 @@ Implement the AlertService containing: (1) a pure `calculatePeriod` function tha
 ## Files Expected
 
 **New files:**
+
 - `src/services/AlertService.ts`
 - `src/services/__tests__/alertService.test.ts`
 
 **Modified files (if needed):**
+
 - `src/interfaces/IUsageRepo.ts` — add `sumTokensByUserAndPeriod` and `sumTokensByModelAndPeriod` if not present
 - `src/repositories/PrismaUsageRepository.ts` — implement the new methods if added
 

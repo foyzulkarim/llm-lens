@@ -5,7 +5,7 @@
 > **Epic:** F8 — Conversation History & Search
 > **Effort:** m
 > **Priority:** medium
-> **Depends on:** P3-E4-T1-conversation-models-repo.md
+> **Depends on:** F8-T1-conversation-models-repo.md
 > **Plan source:** specs/plans/PLAN-F8-conversation-history.md
 
 ## Description
@@ -15,6 +15,7 @@ Implement the ConversationService `saveConversation` method and the `POST /api/c
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/unit/conversations/conversationService.test.ts`
 - `src/__tests__/api/conversations/createConversation.test.ts`
 
@@ -56,12 +57,14 @@ Implement the ConversationService `saveConversation` method and the `POST /api/c
 ## Files Expected
 
 **New files:**
+
 - `src/conversations/conversationService.ts` — ConversationService class with saveConversation()
 - `src/conversations/conversationRoutes.ts` — Express router with POST /api/conversations
 - `src/__tests__/unit/conversations/conversationService.test.ts`
 - `src/__tests__/api/conversations/createConversation.test.ts`
 
 **Modified files:**
+
 - `src/app.ts` — mount conversation routes
 
 ## TDD Sequence
@@ -72,5 +75,6 @@ Implement the ConversationService `saveConversation` method and the `POST /api/c
 4. Mount routes in app.ts
 
 ---
+
 _Generated from: specs/plans/PLAN-F8-conversation-history.md_
-_Next step: "Implement task: specs/tasks/P3-E4-T2-save-conversation-endpoint.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F8-conversation-history/F8-T2-save-conversation-endpoint.md" using the TDD skill._

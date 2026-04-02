@@ -5,7 +5,7 @@
 > **Epic:** F6 — Cost Tracking & Reporting
 > **Effort:** m
 > **Priority:** medium
-> **Depends on:** P3-E2-T3-cost-calculation-service.md, P3-E2-T2-pricing-crud-endpoints.md
+> **Depends on:** F6-T3-cost-calculation-service.md, F6-T2-pricing-crud-endpoints.md
 > **Plan source:** specs/plans/PLAN-F6-cost-tracking.md
 
 ## Description
@@ -15,11 +15,13 @@ Implement the GET /api/reports/costs endpoint that exposes the CostService's cal
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/api/reports/costReport.test.ts`
 
 ### Test Scenarios
 
 #### GET /api/reports/costs
+
 - **returns a full cost report with all breakdowns** — GIVEN usage logs and pricing data exist WHEN GET /api/reports/costs?dateFrom=2026-03-01&dateTo=2026-03-28 THEN responds 200 with totalCost, currency, period, byModel array, byUser array, and unpriced array
 - **filters by model** — GIVEN usage logs for "llama3" and "mistral" WHEN GET /api/reports/costs?model=llama3 THEN the report only includes costs for "llama3"
 - **filters by userId** — GIVEN usage logs from "user-1" and "user-2" WHEN GET /api/reports/costs?userId=user-1 THEN the report only includes costs for "user-1"
@@ -51,14 +53,17 @@ Implement the GET /api/reports/costs endpoint that exposes the CostService's cal
 ## Files Expected
 
 **New files:**
+
 - `src/reports/reportRoutes.ts` — Express router with GET /api/reports/costs
 - `src/reports/reportValidation.ts` — query parameter validation for date filters
 - `src/__tests__/api/reports/costReport.test.ts`
 
 **Modified files:**
+
 - `src/app.ts` — register report routes on /api/reports
 
 **Must NOT modify:**
+
 - `src/pricing/costService.ts` (already done in T3)
 - `src/pricing/pricingRoutes.ts` (already done in T2)
 
@@ -73,5 +78,6 @@ Implement the GET /api/reports/costs endpoint that exposes the CostService's cal
 7. Write API test for unpriced models — verify end-to-end with missing pricing
 
 ---
+
 _Generated from: specs/plans/PLAN-F6-cost-tracking.md_
-_Next step: "Implement task: specs/tasks/P3-E2-T4-cost-report-endpoint.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F6-cost-tracking/F6-T4-cost-report-endpoint.md" using the TDD skill._

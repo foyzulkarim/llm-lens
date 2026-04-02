@@ -5,7 +5,7 @@
 > **Epic:** F2 — Auth Middleware
 > **Effort:** m
 > **Priority:** high
-> **Depends on:** P1-E1-T5-usage-repo-test-infra.md, P1-E2-T1-api-key-repo.md, P1-E2-T2-api-key-auth-provider.md, P1-E2-T3-auth-middleware.md
+> **Depends on:** F1-T5-usage-repo-test-infra.md, F2-T1-api-key-repo.md, F2-T2-api-key-auth-provider.md, F2-T3-auth-middleware.md
 > **Plan source:** specs/plans/PLAN-F2-auth-middleware.md
 
 ## Description
@@ -15,13 +15,14 @@ Wire the auth middleware into the Express app for all `/api/*` routes and write 
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/integration/auth/authMiddleware.test.ts`
 
 ### Test Scenarios
 
 #### Auth Middleware — API route protection (end-to-end)
 
-- **rejects request with no API key** — GIVEN the app is running with auth middleware on /api/* WHEN GET /api/health is called without X-API-Key THEN response is 401 with code "MISSING_API_KEY"
+- **rejects request with no API key** — GIVEN the app is running with auth middleware on /api/\* WHEN GET /api/health is called without X-API-Key THEN response is 401 with code "MISSING_API_KEY"
 - **rejects request with invalid API key** — GIVEN no matching key in the database WHEN GET /api/health is called with X-API-Key "oui-nonexistent" THEN response is 401 with code "INVALID_API_KEY"
 - **rejects request with inactive API key** — GIVEN an inactive key in the database WHEN GET /api/health is called with that key THEN response is 401 with code "INVALID_API_KEY"
 - **accepts request with valid API key** — GIVEN an active key in the database WHEN GET /api/health is called with that key THEN response is 200 and req.user is populated (verified via response body or a test endpoint)
@@ -29,7 +30,7 @@ Wire the auth middleware into the Express app for all `/api/*` routes and write 
 
 #### Auth Middleware — non-API routes
 
-- **does not require auth for non-API routes** — GIVEN the app has a health check at GET / or GET /health WHEN called without X-API-Key THEN response is 200 (auth middleware only applies to /api/*)
+- **does not require auth for non-API routes** — GIVEN the app has a health check at GET / or GET /health WHEN called without X-API-Key THEN response is 200 (auth middleware only applies to /api/\*)
 
 #### Auth Middleware — wiring
 
@@ -58,20 +59,23 @@ Wire the auth middleware into the Express app for all `/api/*` routes and write 
 ## Files Expected
 
 **New files:**
+
 - `src/__tests__/integration/auth/authMiddleware.test.ts`
 
 **Modified files:**
+
 - `src/app.ts` — mount auth middleware on `/api/*` routes, wire ApiKeyAuthProvider with PrismaApiKeyRepository
 - `src/__tests__/helpers/testApp.ts` — update to include auth middleware wiring with test database
 
 **Must NOT modify:**
+
 - `src/middleware/authMiddleware.ts` (defined in T3)
 - `src/auth/apiKeyAuthProvider.ts` (defined in T2)
 - `src/auth/apiKeyRepository.ts` (defined in T1)
 
 ## TDD Sequence
 
-1. Update app.ts to mount auth middleware on /api/* with injected ApiKeyAuthProvider
+1. Update app.ts to mount auth middleware on /api/\* with injected ApiKeyAuthProvider
 2. Write rejection tests (no key, invalid key, inactive key) -> verify middleware is wired correctly
 3. Write acceptance test (valid key) -> verify req.user is populated
 4. Write non-API route test -> verify health check is not protected
@@ -79,5 +83,6 @@ Wire the auth middleware into the Express app for all `/api/*` routes and write 
 6. Write database error test -> verify error handler catches and returns 500
 
 ---
+
 _Generated from: specs/plans/PLAN-F2-auth-middleware.md_
-_Next step: "Implement task: specs/tasks/P1-E2-T4-auth-integration-tests.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F2-auth-middleware/F2-T4-auth-integration-tests.md" using the TDD skill._

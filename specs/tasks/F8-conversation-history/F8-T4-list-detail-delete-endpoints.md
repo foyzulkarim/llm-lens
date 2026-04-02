@@ -5,7 +5,7 @@
 > **Epic:** F8 — Conversation History & Search
 > **Effort:** m
 > **Priority:** medium
-> **Depends on:** P3-E4-T3-search-filter-pagination.md
+> **Depends on:** F8-T3-search-filter-pagination.md
 > **Plan source:** specs/plans/PLAN-F8-conversation-history.md
 
 ## Description
@@ -15,6 +15,7 @@ Implement the remaining three conversation endpoints: `GET /api/conversations` (
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/api/conversations/listConversations.test.ts`
 - `src/__tests__/api/conversations/getConversation.test.ts`
 - `src/__tests__/api/conversations/deleteConversation.test.ts`
@@ -63,11 +64,13 @@ Implement the remaining three conversation endpoints: `GET /api/conversations` (
 ## Files Expected
 
 **New files:**
+
 - `src/__tests__/api/conversations/listConversations.test.ts`
 - `src/__tests__/api/conversations/getConversation.test.ts`
 - `src/__tests__/api/conversations/deleteConversation.test.ts`
 
 **Modified files:**
+
 - `src/conversations/conversationRoutes.ts` — add GET / , GET /:id, DELETE /:id route handlers
 - `src/conversations/conversationService.ts` — add getConversation() and deleteConversation() methods
 
@@ -79,5 +82,6 @@ Implement the remaining three conversation endpoints: `GET /api/conversations` (
 4. Write ownership test (404 for wrong user) -> verify auth scoping is correct
 
 ---
+
 _Generated from: specs/plans/PLAN-F8-conversation-history.md_
-_Next step: "Implement task: specs/tasks/P3-E4-T4-list-detail-delete-endpoints.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F8-conversation-history/F8-T4-list-detail-delete-endpoints.md" using the TDD skill._

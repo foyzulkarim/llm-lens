@@ -5,7 +5,7 @@
 > **Epic:** F2 — Auth Middleware
 > **Effort:** m
 > **Priority:** critical
-> **Depends on:** P1-E1-T1-project-scaffolding.md, P1-E1-T3-interfaces-errors-middleware.md, P1-E2-T2-api-key-auth-provider.md
+> **Depends on:** F1-T1-project-scaffolding.md, F1-T3-interfaces-errors-middleware.md, F2-T2-api-key-auth-provider.md
 > **Plan source:** specs/plans/PLAN-F2-auth-middleware.md
 
 ## Description
@@ -15,6 +15,7 @@ Implement the auth middleware function that extracts the X-API-Key header, valid
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/unit/middleware/authMiddleware.test.ts`
 
 ### Test Scenarios
@@ -23,7 +24,7 @@ Implement the auth middleware function that extracts the X-API-Key header, valid
 
 - **returns 401 when X-API-Key header is absent** — GIVEN a request with no X-API-Key header WHEN the middleware runs THEN response is 401 with `{ error: { message: "API key is required", code: "MISSING_API_KEY", status: 401 } }`
 - **returns 401 when X-API-Key header is empty string** — GIVEN a request with X-API-Key set to "" WHEN the middleware runs THEN response is 401 with code "MISSING_API_KEY" (treated as missing)
-- **returns 401 when X-API-Key header is whitespace only** — GIVEN a request with X-API-Key set to "   " WHEN the middleware runs THEN response is 401 with code "MISSING_API_KEY"
+- **returns 401 when X-API-Key header is whitespace only** — GIVEN a request with X-API-Key set to " " WHEN the middleware runs THEN response is 401 with code "MISSING_API_KEY"
 
 #### Auth Middleware — invalid key
 
@@ -62,14 +63,17 @@ Implement the auth middleware function that extracts the X-API-Key header, valid
 ## Files Expected
 
 **New files:**
+
 - `src/middleware/authMiddleware.ts` — createAuthMiddleware factory function
 - `src/types/express.d.ts` — TypeScript declaration merging for req.user
 - `src/__tests__/unit/middleware/authMiddleware.test.ts`
 
 **Modified files:**
+
 - `tsconfig.json` — ensure `src/types/` is included in typeRoots or files if needed
 
 **Must NOT modify:**
+
 - `src/interfaces/IAuthProvider.ts` (defined in F1-T3)
 - `src/middleware/errorHandler.ts` (defined in F1-T3)
 
@@ -83,5 +87,6 @@ Implement the auth middleware function that extracts the X-API-Key header, valid
 6. Write multi-header edge case test -> implement array handling
 
 ---
+
 _Generated from: specs/plans/PLAN-F2-auth-middleware.md_
-_Next step: "Implement task: specs/tasks/P1-E2-T3-auth-middleware.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F2-auth-middleware/F2-T3-auth-middleware.md" using the TDD skill._

@@ -5,7 +5,7 @@
 > **Epic:** F7 — Usage Alerts & Thresholds
 > **Effort:** s
 > **Priority:** medium
-> **Depends on:** P3-E3-T2-alert-rule-crud-endpoints.md, P3-E3-T3-period-calculation-alert-evaluation.md
+> **Depends on:** F7-T2-alert-rule-crud-endpoints.md, F7-T3-period-calculation-alert-evaluation.md
 > **Plan source:** specs/plans/PLAN-F7-usage-alerts.md
 
 ## Description
@@ -15,11 +15,13 @@ Implement the GET /api/alerts/status endpoint. This endpoint fetches all active 
 ## Test Plan
 
 ### Test File(s)
+
 - `src/routes/__tests__/alerts.status.test.ts`
 
 ### Test Scenarios
 
 #### GET /api/alerts/status — evaluation
+
 - **returns evaluated status for all active rules** — GIVEN two active rules (one daily/user-scope, one monthly/model-scope) with known usage data WHEN GET /api/alerts/status is called THEN 200 is returned with evaluatedAt timestamp and a rules array of length 2, each containing currentUsage, remaining, percentageConsumed, alertTriggered, and thresholdBreached
 - **skips inactive rules** — GIVEN one active rule and one inactive rule WHEN GET /api/alerts/status is called THEN the response contains only 1 rule in the array
 - **returns empty rules array when user has no active rules** — GIVEN no rules for the authenticated user WHEN GET /api/alerts/status is called THEN 200 is returned with an empty rules array and evaluatedAt is present
@@ -48,9 +50,11 @@ Implement the GET /api/alerts/status endpoint. This endpoint fetches all active 
 ## Files Expected
 
 **New files:**
+
 - `src/routes/__tests__/alerts.status.test.ts`
 
 **Modified files:**
+
 - `src/services/AlertService.ts` — add `evaluateAllForUser(userId: string)` method
 - `src/routes/alerts.ts` — add GET /status route handler
 

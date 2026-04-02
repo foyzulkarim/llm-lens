@@ -5,7 +5,7 @@
 > **Epic:** F1 — Scaffolding & Core Interfaces
 > **Effort:** m
 > **Priority:** high
-> **Depends on:** P1-E1-T3-interfaces-errors-middleware.md
+> **Depends on:** F1-T3-interfaces-errors-middleware.md
 > **Plan source:** specs/plans/PLAN-F1-scaffolding-core-interfaces.md
 
 ## Description
@@ -15,6 +15,7 @@ Implement MockOllamaClient and RealOllamaClient — both implementing the IOllam
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/unit/clients/MockOllamaClient.test.ts`
 - `src/__tests__/unit/clients/RealOllamaClient.test.ts`
 
@@ -63,6 +64,7 @@ Implement MockOllamaClient and RealOllamaClient — both implementing the IOllam
 ## Files Expected
 
 **New files:**
+
 - `src/clients/MockOllamaClient.ts`
 - `src/clients/RealOllamaClient.ts`
 - `src/__tests__/unit/clients/MockOllamaClient.test.ts`
@@ -71,6 +73,7 @@ Implement MockOllamaClient and RealOllamaClient — both implementing the IOllam
 **Modified files:** None
 
 **Must NOT modify:**
+
 - `src/interfaces/` (already defined in T3)
 - `src/app.ts` (wiring happens later)
 
@@ -80,5 +83,6 @@ Implement MockOllamaClient and RealOllamaClient — both implementing the IOllam
 2. RealOllamaClient tests → implement RealOllamaClient (requires mocking fetch)
 
 ---
+
 _Generated from: specs/plans/PLAN-F1-scaffolding-core-interfaces.md_
-_Next step: "Implement task: specs/tasks/P1-E1-T4-ollama-clients.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F1-scaffolding-core-interfaces/F1-T4-ollama-clients.md" using the TDD skill._

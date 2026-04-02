@@ -5,7 +5,7 @@
 > **Epic:** F3 — Chat Proxy Endpoint
 > **Effort:** s
 > **Priority:** high
-> **Depends on:** P1-E3-T1-chat-request-validation.md, P1-E3-T2-proxy-service.md, P1-E1-T3-interfaces-errors-middleware.md
+> **Depends on:** F3-T1-chat-request-validation.md, F3-T2-proxy-service.md, F1-T3-interfaces-errors-middleware.md
 > **Plan source:** specs/plans/PLAN-F3-chat-proxy.md
 
 ## Description
@@ -15,6 +15,7 @@ Implement the `ProxyController` class with a `chat` method that takes the valida
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/unit/controllers/ProxyController.test.ts`
 
 ### Test Scenarios
@@ -51,14 +52,17 @@ Implement the `ProxyController` class with a `chat` method that takes the valida
 ## Files Expected
 
 **New files:**
+
 - `src/controllers/ProxyController.ts`
 - `src/routes/chat.ts`
 - `src/__tests__/unit/controllers/ProxyController.test.ts`
 
 **Modified files:**
+
 - `src/app.ts` — mount the chat router at `/api` and configure `express.json({ limit: '1mb' })`
 
 **Must NOT modify:**
+
 - `src/services/ProxyService.ts`
 - `src/middleware/validateChatRequest.ts`
 - `src/interfaces/`
@@ -70,5 +74,6 @@ Implement the `ProxyController` class with a `chat` method that takes the valida
 3. Mount router in app.ts
 
 ---
+
 _Generated from: specs/plans/PLAN-F3-chat-proxy.md_
-_Next step: "Implement task: specs/tasks/P1-E3-T3-chat-controller-route.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F3-chat-proxy/F3-T3-chat-controller-route.md" using the TDD skill._

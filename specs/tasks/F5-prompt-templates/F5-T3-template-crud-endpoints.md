@@ -5,7 +5,7 @@
 > **Epic:** F5 — Prompt Templates
 > **Effort:** m
 > **Priority:** medium
-> **Depends on:** P3-E1-T1-template-rendering-pure-functions.md, P3-E1-T2-prisma-model-template-repository.md
+> **Depends on:** F5-T1-template-rendering-pure-functions.md, F5-T2-prisma-model-template-repository.md
 > **Plan source:** specs/plans/PLAN-F5-prompt-templates.md
 
 ## Description
@@ -15,6 +15,7 @@ Implement the five CRUD endpoints for prompt templates: `POST /api/templates`, `
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/unit/templates/templateService.test.ts`
 - `src/__tests__/api/templates/templateCrud.test.ts`
 
@@ -59,15 +60,18 @@ Implement the five CRUD endpoints for prompt templates: `POST /api/templates`, `
 ## Files Expected
 
 **New files:**
+
 - `src/templates/templateService.ts` — TemplateService class
 - `src/templates/templateRoutes.ts` — Express router with 5 CRUD routes
 - `src/__tests__/unit/templates/templateService.test.ts`
 - `src/__tests__/api/templates/templateCrud.test.ts`
 
 **Modified files:**
+
 - `src/app.ts` — register template routes under `/api/templates`
 
 **Must NOT modify:**
+
 - `prisma/schema.prisma` (already done in T2)
 - Template rendering functions (already done in T1)
 
@@ -80,5 +84,6 @@ Implement the five CRUD endpoints for prompt templates: `POST /api/templates`, `
 5. Register routes in app.ts
 
 ---
+
 _Generated from: specs/plans/PLAN-F5-prompt-templates.md_
-_Next step: "Implement task: specs/tasks/P3-E1-T3-template-crud-endpoints.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F5-prompt-templates/F5-T3-template-crud-endpoints.md" using the TDD skill._

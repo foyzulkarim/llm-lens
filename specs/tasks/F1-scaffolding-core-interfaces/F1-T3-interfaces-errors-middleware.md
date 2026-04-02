@@ -5,7 +5,7 @@
 > **Epic:** F1 — Scaffolding & Core Interfaces
 > **Effort:** s
 > **Priority:** critical
-> **Depends on:** P1-E1-T1-project-scaffolding.md
+> **Depends on:** F1-T1-project-scaffolding.md
 > **Plan source:** specs/plans/PLAN-F1-scaffolding-core-interfaces.md
 
 ## Description
@@ -15,6 +15,7 @@ Define all core interfaces (IOllamaClient, IAuthProvider, IUsageLogger, IUsageRe
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/unit/middleware/errorHandler.test.ts`
 - `src/__tests__/unit/errors/errors.test.ts`
 
@@ -59,6 +60,7 @@ Define all core interfaces (IOllamaClient, IAuthProvider, IUsageLogger, IUsageRe
 ## Files Expected
 
 **New files:**
+
 - `src/interfaces/IOllamaClient.ts` — ChatRequest, ChatResponse, IOllamaClient
 - `src/interfaces/IAuthProvider.ts` — UserContext, IAuthProvider
 - `src/interfaces/IUsageLogger.ts` — UsageRecord, IUsageLogger
@@ -70,9 +72,11 @@ Define all core interfaces (IOllamaClient, IAuthProvider, IUsageLogger, IUsageRe
 - `src/__tests__/unit/errors/errors.test.ts`
 
 **Modified files:**
+
 - `src/app.ts` (register error handler middleware as the last middleware)
 
 **Must NOT modify:**
+
 - `prisma/` directory
 - `src/server.ts`
 
@@ -84,5 +88,6 @@ Define all core interfaces (IOllamaClient, IAuthProvider, IUsageLogger, IUsageRe
 4. Wire error handler into app.ts
 
 ---
+
 _Generated from: specs/plans/PLAN-F1-scaffolding-core-interfaces.md_
-_Next step: "Implement task: specs/tasks/P1-E1-T3-interfaces-errors-middleware.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F1-scaffolding-core-interfaces/F1-T3-interfaces-errors-middleware.md" using the TDD skill._

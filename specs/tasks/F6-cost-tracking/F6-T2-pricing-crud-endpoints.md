@@ -5,7 +5,7 @@
 > **Epic:** F6 — Cost Tracking & Reporting
 > **Effort:** m
 > **Priority:** medium
-> **Depends on:** P3-E2-T1-model-pricing-schema-repository.md
+> **Depends on:** F6-T1-model-pricing-schema-repository.md
 > **Plan source:** specs/plans/PLAN-F6-cost-tracking.md
 
 ## Description
@@ -15,11 +15,13 @@ Implement the four pricing CRUD endpoints: POST /api/pricing, GET /api/pricing, 
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/api/pricing/pricingRoutes.test.ts`
 
 ### Test Scenarios
 
 #### POST /api/pricing
+
 - **creates pricing and returns 201** — GIVEN a valid pricing body with modelName, costPerPromptToken, costPerCompletionToken, effectiveDate WHEN POST /api/pricing THEN responds 201 with the created entry including id and createdAt
 - **returns 400 for missing required fields** — GIVEN a body missing modelName WHEN POST /api/pricing THEN responds 400 with code VALIDATION_ERROR
 - **returns 400 for negative cost values** — GIVEN costPerPromptToken = -0.001 WHEN POST /api/pricing THEN responds 400 with code VALIDATION_ERROR
@@ -27,15 +29,18 @@ Implement the four pricing CRUD endpoints: POST /api/pricing, GET /api/pricing, 
 - **defaults currency to USD when omitted** — GIVEN a valid body without currency WHEN POST /api/pricing THEN the response has currency = "USD"
 
 #### GET /api/pricing
+
 - **returns all pricing entries** — GIVEN 2 pricing entries exist WHEN GET /api/pricing THEN responds 200 with an array of 2 entries
 - **returns empty array when none exist** — GIVEN no pricing entries WHEN GET /api/pricing THEN responds 200 with []
 
 #### PUT /api/pricing/:id
+
 - **updates and returns the modified entry** — GIVEN a pricing entry with id "abc" WHEN PUT /api/pricing/abc with updated costPerPromptToken THEN responds 200 with the updated entry
 - **returns 404 for unknown id** — GIVEN no pricing entry with id "unknown" WHEN PUT /api/pricing/unknown THEN responds 404 with code NOT_FOUND
 - **returns 400 for invalid update data** — GIVEN a negative costPerCompletionToken WHEN PUT /api/pricing/:id THEN responds 400 with code VALIDATION_ERROR
 
 #### DELETE /api/pricing/:id
+
 - **deletes and returns 204** — GIVEN a pricing entry with id "abc" WHEN DELETE /api/pricing/abc THEN responds 204 with no body
 - **returns 404 for unknown id** — GIVEN no pricing entry with id "unknown" WHEN DELETE /api/pricing/unknown THEN responds 404 with code NOT_FOUND
 
@@ -60,14 +65,17 @@ Implement the four pricing CRUD endpoints: POST /api/pricing, GET /api/pricing, 
 ## Files Expected
 
 **New files:**
+
 - `src/pricing/pricingRoutes.ts` — Express router with POST, GET, PUT, DELETE
 - `src/pricing/pricingValidation.ts` — validation functions for pricing input
 - `src/__tests__/api/pricing/pricingRoutes.test.ts`
 
 **Modified files:**
+
 - `src/app.ts` — register pricing routes on /api/pricing
 
 **Must NOT modify:**
+
 - `prisma/schema.prisma` (already done in T1)
 - `src/pricing/pricingRepository.ts` (already done in T1)
 
@@ -81,5 +89,6 @@ Implement the four pricing CRUD endpoints: POST /api/pricing, GET /api/pricing, 
 6. Write API tests for DELETE /api/pricing/:id (happy + 404) — implement delete route
 
 ---
+
 _Generated from: specs/plans/PLAN-F6-cost-tracking.md_
-_Next step: "Implement task: specs/tasks/P3-E2-T2-pricing-crud-endpoints.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F6-cost-tracking/F6-T2-pricing-crud-endpoints.md" using the TDD skill._

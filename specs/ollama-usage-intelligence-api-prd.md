@@ -134,7 +134,7 @@ Key insight for students: designing the app so Ollama is behind an interface is 
 
 ## 3. Foundation — Pre-Session Build (80%)
 
-*This is what you build and screen-record before Session 1. Students receive this recording as supplementary material — they can watch it before Session 1 for context, or after the workshop to rewind and digest the full methodology at their own pace. The recording demonstrates the 5-phase methodology applied to the core architectural decisions.*
+_This is what you build and screen-record before Session 1. Students receive this recording as supplementary material — they can watch it before Session 1 for context, or after the workshop to rewind and digest the full methodology at their own pace. The recording demonstrates the 5-phase methodology applied to the core architectural decisions._
 
 ### 3.1 Core Interfaces
 
@@ -165,7 +165,7 @@ A running Express server with:
 
 ## 4. Live Class Feature — Session 1 (20%)
 
-*This is the slice you build collaboratively with the audience during Session 1. It's chosen because it has a genuine design question the audience can debate, and the implementation is TDD-friendly.*
+_This is the slice you build collaboratively with the audience during Session 1. It's chosen because it has a genuine design question the audience can debate, and the implementation is TDD-friendly._
 
 ### 4.1 Feature: Async Usage Logging
 
@@ -204,9 +204,9 @@ Async logging (chosen):
 
 ## 5. Student Features — Session 2
 
-*Four features, each a complete vertical slice (route → service → repository → Prisma model → tests). Students pick one. Each feature reads from or extends the foundation. Each has a genuine design question to debate during their Phase 1-2 work, and real service-layer logic that makes TDD meaningful — not just CRUD pass-through.*
+_Four features, each a complete vertical slice (route → service → repository → Prisma model → tests). Students pick one. Each feature reads from or extends the foundation. Each has a genuine design question to debate during their Phase 1-2 work, and real service-layer logic that makes TDD meaningful — not just CRUD pass-through._
 
-*Students work individually or in small groups (their choice). The methodology is the lesson, not the completion of the feature.*
+_Students work individually or in small groups (their choice). The methodology is the lesson, not the completion of the feature._
 
 ### Student Feature Architecture Pattern
 
@@ -349,7 +349,7 @@ The base repo includes seed data so student features have something to query aga
 - Anti-demo video (under 10 minutes): vague prompt chaos, dissecting what went wrong
 - Base build recording: building the 80% foundation using the 5-phase methodology with Claude Code, framework explained as it's applied
 
-*Students can watch before Session 1 for context, or after the workshop to rewind and digest at their own pace.*
+_Students can watch before Session 1 for context, or after the workshop to rewind and digest at their own pace._
 
 ### Session 1 — Friday April 3, 8:00 PM Bangladesh Time (2 hours)
 
@@ -385,4 +385,4 @@ The base repo includes seed data so student features have something to query aga
 
 ---
 
-*End of PRD*
+_End of PRD_

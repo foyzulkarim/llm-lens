@@ -5,7 +5,7 @@
 > **Epic:** F5 — Prompt Templates
 > **Effort:** s
 > **Priority:** medium
-> **Depends on:** P1-E1-T2-prisma-schema-seed.md, P1-E1-T5-usage-repo-test-infra.md
+> **Depends on:** F1-T2-prisma-schema-seed.md, F1-T5-usage-repo-test-infra.md
 > **Plan source:** specs/plans/PLAN-F5-prompt-templates.md
 
 ## Description
@@ -15,6 +15,7 @@ Add the `PromptTemplate` model to the Prisma schema and implement `ITemplateRepo
 ## Test Plan
 
 ### Test File(s)
+
 - `src/__tests__/integration/templates/templateRepository.test.ts`
 
 ### Test Scenarios
@@ -46,19 +47,22 @@ Add the `PromptTemplate` model to the Prisma schema and implement `ITemplateRepo
 - Do NOT implement any route or service logic
 - Do NOT implement template rendering (that is T1)
 - Do NOT add authentication middleware — the repository receives userId as a parameter
-- Integration tests require the test database infrastructure from P1-E1-T5
+- Integration tests require the test database infrastructure from F1-T5
 
 ## Files Expected
 
 **New files:**
+
 - `src/templates/ITemplateRepo.ts` — ITemplateRepo interface with TemplateData type
 - `src/templates/templateRepository.ts` — PrismaTemplateRepository class
 - `src/__tests__/integration/templates/templateRepository.test.ts`
 
 **Modified files:**
+
 - `prisma/schema.prisma` — add PromptTemplate model with userId index
 
 **Must NOT modify:**
+
 - Existing models in schema.prisma (only add new model)
 - Any route or middleware files
 
@@ -71,5 +75,6 @@ Add the `PromptTemplate` model to the Prisma schema and implement `ITemplateRepo
 5. Define ITemplateRepo interface to match the implemented methods
 
 ---
+
 _Generated from: specs/plans/PLAN-F5-prompt-templates.md_
-_Next step: "Implement task: specs/tasks/P3-E1-T2-prisma-model-template-repository.md" using the TDD skill._
+_Next step: "Implement task: specs/tasks/F5-prompt-templates/F5-T2-prisma-model-template-repository.md" using the TDD skill._
