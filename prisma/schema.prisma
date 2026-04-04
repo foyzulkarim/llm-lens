@@ -29,3 +29,13 @@ model UsageLog {
   @@index([userId, createdAt])
   @@index([model, createdAt])
 }
+
+model UsageSummaryCache {
+  id             String   @id @default(uuid())
+  userId         String
+  model          String
+  totalRequests  Int
+  totalTokens    Int
+  avgLatency     Float
+  computedAt     DateTime @default(now())
+}
