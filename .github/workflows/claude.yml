@@ -35,48 +35,11 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-
-          # This is an optional setting that allows Claude to read CI results on PRs
           additional_permissions: |
             actions: read
-
-          # Optional: Give a custom prompt to Claude. If this is not specified, Claude will perform the instructions specified in the comment that tagged it.
-          # prompt: 'Update the pull request description to include a summary of changes.'
-
-          # Optional: Add claude_args to customize behavior and configuration
-          # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
-          # or https://code.claude.com/docs/en/cli-reference for available options
-          # claude_args: '--allowed-tools Bash(gh pr:*)'
-
-  claude-glm:
-    if: |
-      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@glm')) ||
-      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@glm')) ||
-      (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@glm')) ||
-      (github.event_name == 'issues' && (contains(github.event.issue.body, '@glm') || contains(github.event.issue.title, '@glm')))
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: read
-      issues: read
-      id-token: write
-      actions: read
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-
-      - name: Run Claude Code with GLM
-        id: claude
-        uses: anthropics/claude-code-action@v1
         env:
           ANTHROPIC_BASE_URL: "https://api.z.ai/api/anthropic"
-          ANTHROPIC_AUTH_TOKEN: ${{ secrets.GLM_API_KEY }}
           API_TIMEOUT_MS: "3000000"
           ANTHROPIC_DEFAULT_HAIKU_MODEL: "glm-4.7-flash"
           ANTHROPIC_DEFAULT_SONNET_MODEL: "glm-5.1"
           ANTHROPIC_DEFAULT_OPUS_MODEL: "glm-5.1"
-        with:
-          additional_permissions: |
-            actions: read
