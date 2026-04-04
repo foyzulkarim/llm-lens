@@ -1,23 +1,34 @@
-import express from "express";
+import express, { Express } from "express";
 import { PrismaClient } from "@prisma/client";
 import { errorHandler } from "./middleware/errorHandler";
+import { createAuthMiddleware } from "./middleware/authMiddleware";
+import { PrismaApiKeyRepository } from "./auth/apiKeyRepository";
+import { ApiKeyAuthProvider } from "./auth/apiKeyAuthProvider";
 import { PrismaUsageRepository } from "./usage/usageRepository";
 import { UsageSummaryService } from "./usage/usageSummaryService";
 import { createUsageSummaryRouter } from "./usage/usageSummaryRouter";
 
-const app = express();
-const prisma = new PrismaClient();
-const usageRepo = new PrismaUsageRepository(prisma);
-const summaryService = new UsageSummaryService(usageRepo);
+export function createApp(prisma: PrismaClient): Express {
+  const app = express();
 
-app.use(express.json());
+  app.use(express.json());
 
-app.get("/health", (_req, res) => {
-  res.json({ status: "ok" });
-});
+  // Public routes — registered before auth middleware
+  app.get("/health", (_req, res) => {
+    res.json({ status: "ok" });
+  });
 
-app.use("/api/usage", createUsageSummaryRouter(summaryService));
+  // Auth middleware — protects all routes registered below
+  const apiKeyRepo = new PrismaApiKeyRepository(prisma);
+  const authProvider = new ApiKeyAuthProvider(apiKeyRepo);
+  app.use(createAuthMiddleware(authProvider));
 
-app.use(errorHandler);
+  // Protected routes
+  const usageRepo = new PrismaUsageRepository(prisma);
+  const summaryService = new UsageSummaryService(usageRepo);
+  app.use("/api/usage", createUsageSummaryRouter(summaryService));
 
-export default app;
+  app.use(errorHandler);
+
+  return app;
+}
