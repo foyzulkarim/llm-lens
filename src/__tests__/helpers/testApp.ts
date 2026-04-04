@@ -1,6 +1,7 @@
 import { Express } from "express";
-import app from "../../app";
+import { PrismaClient } from "@prisma/client";
+import { createApp } from "../../app";
 
-export function createTestApp(): Express {
-  return app;
+export function createTestApp(prisma: PrismaClient): Express {
+  return createApp(prisma);
 }
