@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction, RequestHandler } from "express";
 import { IAuthProvider, UserContext } from "../interfaces/IAuthProvider";
 import { AuthenticationError } from "../errors";
 
@@ -9,7 +9,7 @@ declare module "express-serve-static-core" {
   }
 }
 
-export function createAuthMiddleware(authProvider: IAuthProvider) {
+export function createAuthMiddleware(authProvider: IAuthProvider): RequestHandler {
   return async (req: Request, _res: Response, next: NextFunction): Promise<void> => {
     const apiKey = req.headers["x-api-key"];
 
@@ -23,7 +23,7 @@ export function createAuthMiddleware(authProvider: IAuthProvider) {
       req.userContext = userContext;
       next();
     } catch (err) {
-      next(err);
+      next(err instanceof Error ? err : new Error(String(err)));
     }
   };
 }

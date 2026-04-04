@@ -1,4 +1,4 @@
-import { IAuthProvider, UserContext } from "../interfaces/IAuthProvider";
+import { IAuthProvider, UserContext } from "../interfaces";
 import { IApiKeyRepo } from "../interfaces/IApiKeyRepo";
 import { AuthenticationError } from "../errors";
 
@@ -15,7 +15,6 @@ export class ApiKeyAuthProvider implements IAuthProvider {
     return {
       userId: record.userId,
       userName: record.userName,
-      apiKey: record.key,
     };
   }
 }

@@ -31,7 +31,6 @@ describe("ApiKeyAuthProvider", () => {
       expect(result).toEqual({
         userId: "user-1",
         userName: "Alice",
-        apiKey: "valid-key",
       });
     });
   });

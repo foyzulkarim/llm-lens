@@ -25,7 +25,6 @@ function makeProvider(result: UserContext | Error): IAuthProvider {
 const validContext: UserContext = {
   userId: "user-1",
   userName: "Alice",
-  apiKey: "valid-key",
 };
 
 describe("createAuthMiddleware", () => {
